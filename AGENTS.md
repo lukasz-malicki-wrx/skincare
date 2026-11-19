@@ -18,18 +18,21 @@ within a budget, and a diet list. Single app, no monorepo. Package manager: pnpm
 src/
   app/                 routes only: pages, layouts, route handlers, server actions
     (landing)/         marketing page at /
-    (pwa)/app/         the app: sign-in/up, onboarding (start/*), tabs ((shell)/today, plan, profile)
+    (pwa)/app/         the app: (auth)/ sign-in and sign-up, start/ onboarding, (shell)/ tabs
     api/*/route.ts     thin model routes: read the request, call src/lib/ai, map the outcome
     actions/           server actions (auth, account, subscription)
   features/<name>/     screens and hooks of one feature: analysis (camera/, report/), plan,
                        skin-profile, account, auth, paywall, today, landing (styled by landing.css)
-  components/          UI shared by several features (nav, loading, screen, brand mark)
-  hooks/               client hooks shared by several features (localStorage store, last analysis)
+  components/          shared UI primitives (Button, Text, Heading, Card, Input, Tabs, ...)
+  hooks/               client hooks shared by several features (localStorage, report, URL state)
   lib/                 pure domain logic and schemas, with *.test.ts next to them
   lib/ai/              every Anthropic call: client, prompts, request helpers for routes
   i18n/                PL/EN dictionaries, locale cookie, LocaleProvider
   config/              routes, navigation, brand tokens
   data/catalog.json    product catalogue (scripts/build-catalog.mjs)
+e2e/                   Playwright end-to-end and WCAG 2.1 AA tests against a production build
+scripts/               traceability check, catalogue builder, node:test resolver
+docs/compliance/       GxP and accessibility documentation
 ```
 
 Where new code goes:

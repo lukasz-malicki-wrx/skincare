@@ -63,4 +63,4 @@ Next.js server (Vercel)
 | Vercel | Hosting, build | *Organisational* — supplier assessment |
 | Turso | Database | *Organisational* — supplier assessment, backup and point-in-time recovery settings |
 | Anthropic | Model API | *Organisational* — supplier assessment, data-processing terms |
-| npm packages | Libraries | Pinned exact versions and lockfile; licences limited to permissive (see README) |
+| npm packages | Libraries | Pinned exact versions and lockfile; permissive licences only (MIT, Apache-2.0, BSD, ISC) |

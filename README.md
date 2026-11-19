@@ -1,85 +1,98 @@
-# SkinCode — pielęgnacja skóry z jednego zdjęcia
+# SkinCode — skincare from a single photo
+
+**English** | [Polski](README.pl.md)
 
 [![CI](https://github.com/lukasz-malicki-wrx/skincare/actions/workflows/ci.yml/badge.svg)](https://github.com/lukasz-malicki-wrx/skincare/actions/workflows/ci.yml)
 
-SkinCode to aplikacja PWA, która na podstawie jednego zdjęcia skóry przygotowuje raport, poranną i wieczorną rutynę pielęgnacyjną, listę produktów w zadanym budżecie oraz listę produktów spożywczych wspierających skórę. Analizę zdjęcia i dobór planu wykonuje model Claude (Anthropic) z odpowiedziami walidowanymi schematami Zod.
+SkinCode is a progressive web app that turns one photo of your skin into a report, a morning and evening care routine, a product list within your budget and a list of foods that support your skin. The photo assessment and the plan come from Claude (Anthropic), with every response validated against Zod schemas.
 
-Aplikacja ma charakter kosmetyczny, nie medyczny: opisuje wygląd skóry i proponuje pielęgnację, a przy zmianach wymagających konsultacji odsyła do dermatologa.
+The app gives cosmetic guidance, not a diagnosis: it describes how the skin looks and suggests care, and refers the user to a dermatologist when something needs a consultation.
 
 <p align="center">
-  <img src="docs/screenshots/01-landing.png" width="240" alt="Strona główna">
-  <img src="docs/screenshots/03-report.png" width="240" alt="Raport skóry">
-  <img src="docs/screenshots/06-plan.png" width="240" alt="Plan pielęgnacji">
+  <img src="docs/screenshots/01-landing.png" width="240" alt="Landing page">
+  <img src="docs/screenshots/03-report.png" width="240" alt="Skin report">
+  <img src="docs/screenshots/06-plan.png" width="240" alt="Care plan">
 </p>
 
-## Jak to działa
+## How it works
 
-1. **Zdjęcie** — użytkownik robi zdjęcie twarzy, szyi lub dłoni aparatem w przeglądarce albo wybiera je z galerii. Zdjęcie jest kompresowane po stronie klienta.
-2. **Raport** — model ocenia jakość zdjęcia, typ skóry i widoczne problemy (z obszarem i nasileniem), wskazuje składniki do unikania i w razie potrzeby zaleca wizytę u dermatologa.
-3. **Profil** — użytkownik poprawia typ skóry, zaznacza wrażliwości i alergie, ustala miesięczny budżet i ograniczenia dietetyczne.
-4. **Plan** — powstaje rutyna rano i wieczorem (do trzech kroków każda) z produktami dobranymi z katalogu i sklepów internetowych, z kosztem w odniesieniu do budżetu. Każdy produkt można podmienić.
-5. **Dieta** — lista produktów „jedz więcej” i „ogranicz” z uzasadnieniem, zgodna z ograniczeniami dietetycznymi.
-6. **Profil konta** — język (PL/EN), subskrypcja, przypomnienia o rutynie, eksport i usunięcie danych.
+1. **Photo** — the user takes a photo of their face, neck or hands with the browser camera, or picks one from the library. The photo is compressed on the device.
+2. **Report** — the model checks the photo quality, the skin type and visible concerns (with area and severity), lists ingredients to avoid and, when needed, recommends a dermatologist.
+3. **Profile** — the user corrects the skin type, marks sensitivities and allergies, and sets a monthly budget and diet restrictions.
+4. **Plan** — a morning and evening routine (up to three steps each) with products picked from the catalogue and online shops, and its cost against the budget. Any product can be swapped.
+5. **Diet** — "eat more" and "limit" lists with reasons, respecting the diet restrictions.
+6. **Account** — language (EN/PL), subscription, routine reminders, data export and deletion.
 
-Płatność za subskrypcję jest symulowana (animowany mock, bez operatora płatności).
+The subscription payment is simulated (an animated mock, no payment provider).
 
-## Zrzuty ekranu
+## Screenshots
 
-| Zdjęcie | Raport | Profil skóry | Dostęp |
+| Photo | Report | Skin profile | Access |
 | --- | --- | --- | --- |
-| ![Zdjęcie](docs/screenshots/02-photo.png) | ![Raport](docs/screenshots/03-report.png) | ![Profil skóry](docs/screenshots/04-profile.png) | ![Paywall](docs/screenshots/05-paywall.png) |
+| ![Photo](docs/screenshots/02-photo.png) | ![Report](docs/screenshots/03-report.png) | ![Skin profile](docs/screenshots/04-profile.png) | ![Paywall](docs/screenshots/05-paywall.png) |
 
-| Plan pielęgnacji | Dieta | Konto | Strona główna |
+| Care plan | Diet | Account | Landing page |
 | --- | --- | --- | --- |
-| ![Plan](docs/screenshots/06-plan.png) | ![Dieta](docs/screenshots/07-diet.png) | ![Konto](docs/screenshots/08-account.png) | ![Landing](docs/screenshots/01-landing.png) |
+| ![Plan](docs/screenshots/06-plan.png) | ![Diet](docs/screenshots/07-diet.png) | ![Account](docs/screenshots/08-account.png) | ![Landing](docs/screenshots/01-landing.png) |
 
-## Technologie
+## Tech stack
 
 - **Next.js 16** (App Router, Server Actions), **React 19**, **TypeScript**
 - **Tailwind CSS 4**
-- **Anthropic SDK** — analiza zdjęcia, rutyna, wyszukiwanie produktów (web search) i dieta, structured output przez **Zod 4**
-- **Turso / libSQL** — konta, sesje i stan subskrypcji
-- **PWA** — manifest, service worker, instalacja na ekranie głównym, przypomnienia
-- Dwa języki interfejsu: polski i angielski (`src/i18n`)
+- **Anthropic SDK** — photo assessment, routine, product search (web search) and diet, structured output with **Zod 4**
+- **Turso / libSQL** — accounts, sessions, subscription state and an append-only audit trail
+- **Playwright + axe-core** — end-to-end tests and automated WCAG 2.1 AA checks
+- **PWA** — manifest, service worker, home-screen install, reminders
+- Two interface languages: English and Polish (`src/i18n`)
 
-## Jak to jest zbudowane
+## How it is built
 
-- **Granica serwer/klient.** Baza, sesje, hasła i klient Anthropic mają `import "server-only"`. Reguły potrzebne też w przeglądarce (np. dostęp do planu) są osobnymi, czystymi modułami.
-- **Warstwa AI poza route'ami.** Prompty, wywołania modelu i walidacja wyniku (Zod, structured output) są w `src/lib/ai`. Endpointy w `src/app/api` tylko czytają żądanie i mapują wynik na odpowiedź HTTP.
-- **Dane klienta.** Jeden klient API (`postJson`) z `AbortController` i tłumaczonymi komunikatami błędów. Raport, profil i plan siedzą w `localStorage` za `useSyncExternalStore`, a każdy zapis przechodzi przez parser, który zamienia uszkodzone dane na bezpieczny stan.
-- **Stan, który da się wyliczyć, nie jest trzymany.** Wybrana zakładka i pora dnia są w URL (odświeżenie i „wstecz” je zachowują), a „produkty gotowe” wynika z zapisanego raportu.
-- **Lazy loading.** Dialog produktu i zakładka diety to osobne chunki (`next/dynamic`). Dialog zaczyna się pobierać już po najechaniu na produkt lub ustawieniu na nim fokusu.
-- **Mały, testowalny kod.** Jeden komponent na plik, czysta logika w osobnych modułach `.ts` z testami, brak cykli importów.
-- **Renderowanie.** Karty kroków to komponenty `memo` ze stabilnymi callbackami, a lista jest memoizowana tylko tam, gdzie się to opłaca.
-- **Dostępność.** Zakładki zgodne z WAI-ARIA (klawiatura, roving tabindex), natywny `<dialog>`, `role="alert"` i `role="status"`, powiązane błędy formularzy.
-- **Odporność.** `error.tsx` w każdym segmencie aplikacji, `global-error.tsx`, `not-found.tsx`. Stare polskie adresy przekierowują na nowe (308).
-- **Jakość.** Testy jednostkowe czystej logiki (tabelaryczne, `node:test`), `pnpm check` lokalnie i CI na GitHub Actions (typy, lint, testy, build).
+- **Server/client boundary.** The database, sessions, passwords and the Anthropic client import `"server-only"`. Rules the browser also needs (such as plan access) live in separate pure modules.
+- **AI layer outside the routes.** Prompts, model calls and output validation (Zod, structured output) live in `src/lib/ai`. The routes in `src/app/api` only read the request and map the outcome to an HTTP response.
+- **Client data.** One API client (`postJson`) with `AbortController` and translated error messages. The report, profile and plan live in `localStorage` behind `useSyncExternalStore`, and every read goes through a parser that turns corrupted data into a safe state.
+- **Derived state is not stored.** The selected tab and time of day live in the URL (refresh and back keep them), and "products ready" is derived from the saved report.
+- **Lazy loading.** The product dialog and the diet tab are separate chunks (`next/dynamic`). The dialog starts downloading when the user hovers or focuses a product.
+- **Small, testable code.** One component per file, pure logic in separate `.ts` modules with tests, no import cycles.
+- **Rendering.** Step cards are `memo` components with stable callbacks, and the list is memoised only where it pays off.
+- **Accessibility.** WAI-ARIA tabs (keyboard, roving tabindex), native `<dialog>`, native radios and checkboxes, `role="alert"` for errors and `<output>` for status, form errors tied to their fields, animations only under `motion-safe`.
+- **Resilience.** `error.tsx` in every app segment, `global-error.tsx`, `not-found.tsx`. Former Polish addresses redirect permanently (308) to the English ones.
+- **Data integrity.** Sign-ins, subscription changes and account deletion go to an audit trail written in the same transaction as the change; the table cannot be edited or cleared.
+- **Quality.** Unit and integration tests (`node:test`), end-to-end tests with axe on a production build, a requirement traceability check, SonarCloud, and CI on GitHub Actions with actions pinned to commit SHAs.
 
-## Struktura
+## Project structure
 
 ```
 src/
-  app/
-    (landing)/          strona główna pod /
-    (pwa)/app/          aplikacja: logowanie, onboarding (start/*) i zakładki (today, plan, profile)
-    api/*/route.ts      cienkie endpointy modeli: analyze, routine, products, diet
-    actions/            server actions: konto, logowanie, subskrypcja
-  features/             ekrany i hooki pogrupowane według funkcji, jeden komponent na plik:
-                        analysis (camera/, report/), plan, skin-profile, account, auth,
-                        paywall, today, landing
-  components/           komponenty wspólne dla kilku funkcji
-  hooks/                hooki wspólne dla kilku funkcji
-  lib/                  logika domenowa i schematy: analiza, plan, katalog, dieta, subskrypcja, baza
-  lib/ai/               wywołania Claude: klient, prompty, obsługa żądań i błędów w endpointach
-  i18n/                 tłumaczenia, wybór języka, LocaleProvider
-  config/               ścieżki, nawigacja, tokeny marki
-  data/catalog.json     katalog produktów (generowany przez scripts/build-catalog.mjs)
-docs/                   notatki techniczne i zrzuty ekranu
+  app/                    routing only: pages, layouts, route handlers, server actions
+    (landing)/            landing page at /
+    (pwa)/app/            the app at /app
+      (auth)/             sign-in and sign-up with a shared layout
+      start/              onboarding: photo, report, profile, paywall, plan
+      (shell)/            tabs with the bottom navigation: today, plan, profile
+    api/*/route.ts        thin model routes: analyze, routine, products, diet
+    actions/              server actions: auth, account, subscription
+  features/               screens and hooks by feature, one component per file
+    analysis/camera/      camera and sending the photo for assessment
+    analysis/report/      skin report and building the routine
+    plan/, skin-profile/, account/, auth/, paywall/, today/, landing/
+  components/             shared UI: Button, Text, Heading, Card, Input, TextLink,
+                          Tabs, ChoiceChip, ProgressBar, Alert, icons, error screens
+  hooks/                  shared hooks: localStorage, saved report, URL state
+  lib/                    pure domain logic and schemas, with tests next to them
+  lib/ai/                 Claude calls: client, prompts, validation, error handling
+  i18n/                   EN/PL translations, price and date formatting, locale choice
+  config/                 routes, navigation, brand tokens
+  data/catalog.json       product catalogue (scripts/build-catalog.mjs)
+e2e/                      end-to-end and WCAG 2.1 AA tests (Playwright, axe-core)
+scripts/                  requirement traceability check, catalogue builder, test resolver
+docs/compliance/          GxP and accessibility documentation
+docs/screenshots/         README screenshots
+.github/                  CI, CODEOWNERS, pull request template
 ```
 
-## Uruchomienie lokalne
+## Running locally
 
-Wymagania: Node.js 20+ i pnpm 10.
+Requirements: Node.js 22+ and pnpm 10.
 
 ```bash
 pnpm install
@@ -87,40 +100,44 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-W `.env.local` ustaw:
+Set in `.env.local`:
 
-| Zmienna | Opis |
+| Variable | Description |
 | --- | --- |
-| `ANTHROPIC_API_KEY` | klucz API Anthropic, potrzebny do analizy, planu, produktów i diety |
-| `ANTHROPIC_MODEL` | model do analizy, np. `claude-haiku-4-5`, `claude-sonnet-5-5`, `claude-opus-5-5` |
-| `TURSO_DATABASE_URL` | adres bazy Turso; lokalnie wystarczy plik SQLite, np. `file:data/local.db` |
-| `TURSO_AUTH_TOKEN` | token Turso; przy lokalnym pliku dowolna niepusta wartość |
+| `ANTHROPIC_API_KEY` | Anthropic API key, needed for the assessment, plan, products and diet |
+| `ANTHROPIC_MODEL` | model for the assessment, e.g. `claude-haiku-4-5`, `claude-sonnet-5-5`, `claude-opus-5-5` |
+| `TURSO_DATABASE_URL` | Turso database URL; locally a SQLite file is enough, e.g. `file:data/local.db` |
+| `TURSO_AUTH_TOKEN` | Turso token; any non-empty value for a local file |
 
-Strona główna jest pod [http://localhost:3000](http://localhost:3000), aplikacja pod `/app`. Kamera, service worker i instalacja PWA wymagają HTTPS poza `localhost` (np. `next dev --experimental-https` albo tunel).
+The landing page is at [http://localhost:3000](http://localhost:3000) and the app at `/app`. The camera, service worker and PWA install need HTTPS outside `localhost` (for example `next dev --experimental-https` or a tunnel).
 
-## Testy
-
-```bash
-pnpm test     # testy jednostkowe
-pnpm check    # typy, lint i testy, jak w CI
-```
-
-Testy jednostkowe (`node:test`, bez dodatkowych zależności) obejmują czystą logikę w `src/lib`, `src/i18n`, `src/components` i `src/features`.
-
-## Zgodność (GxP, WCAG 2.1)
-
-Projekt jest prowadzony według praktyk dla środowiska regulowanego GxP i celuje w WCAG 2.1 AA. Wymagania z identyfikatorami, macierz identyfikowalności, plan walidacji, ocena 21 CFR Part 11 / Annex 11, integralność danych (ALCOA+) i deklaracja dostępności są w [docs/compliance](docs/compliance/README.md) (po angielsku).
+## Tests
 
 ```bash
-pnpm verify   # typy, lint, testy, identyfikowalność, build, e2e i WCAG
+pnpm test       # unit and integration tests (node:test)
+pnpm check      # types, lint, tests and requirement traceability
+pnpm build && pnpm test:e2e   # end-to-end and WCAG 2.1 AA tests on a production build
 ```
 
-## Dokumentacja
+Unit tests sit next to the code (`*.test.ts`), end-to-end tests in `e2e/`. Every test that verifies a requirement starts its title with the requirement ID (for example `REQ-DI-02`). The end-to-end tests start their own server with a local SQLite database and mock the model calls, so they need no API key. Install the browser with `pnpm exec playwright install chromium`.
 
-- [docs/TECH-SETUP.md](docs/TECH-SETUP.md) — analiza techniczna MVP i architektura
-- [docs/AI-INTEGRATION-BRIEF.md](docs/AI-INTEGRATION-BRIEF.md) — możliwe podejścia do obsługi wielu modeli AI
-- [docs/scope-mvp.md](docs/scope-mvp.md) — zakres MVP i lista ekranów
+## Compliance (GxP, WCAG 2.1)
 
-## Licencja
+The project follows engineering practice for a regulated (GxP) environment and targets WCAG 2.1 AA. Requirements with IDs, the traceability matrix, the validation plan, the 21 CFR Part 11 / Annex 11 assessment, data integrity (ALCOA+) and the accessibility statement are in [docs/compliance](docs/compliance/README.md).
 
-Kod: MIT, zob. [LICENSE](LICENSE). Materiały poza kodem (grafiki, opisy, landing): CC BY 4.0, zob. [LICENSE-MATERIALS.md](LICENSE-MATERIALS.md).
+```bash
+pnpm verify   # types, lint, tests, traceability, build, end-to-end and WCAG
+```
+
+## Documentation
+
+- [docs/compliance](docs/compliance/README.md) — requirements, validation, data integrity, accessibility
+- [CHANGELOG.md](CHANGELOG.md) — change history
+- [SECURITY.md](SECURITY.md) — reporting a vulnerability
+- [docs/TECH-SETUP.md](docs/TECH-SETUP.md) — MVP technical analysis and architecture (Polish)
+- [docs/AI-INTEGRATION-BRIEF.md](docs/AI-INTEGRATION-BRIEF.md) — options for supporting several AI models (Polish)
+- [docs/scope-mvp.md](docs/scope-mvp.md) — MVP scope and screen list (Polish)
+
+## License
+
+Code: MIT, see [LICENSE](LICENSE). Non-code materials (graphics, copy, landing page): CC BY 4.0, see [LICENSE-MATERIALS.md](LICENSE-MATERIALS.md).
