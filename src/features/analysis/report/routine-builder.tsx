@@ -9,7 +9,7 @@ import type { StoredAnalysis } from "@/lib/skin-analysis";
 import { Heading } from "@/components/heading";
 import { Text } from "@/components/text";
 
-export function RoutineBuilder({ stored, onRetry }: { stored: StoredAnalysis; onRetry: () => void }) {
+export function RoutineBuilder({ stored, onRetry }: Readonly<{ stored: StoredAnalysis; onRetry: () => void }>) {
   const messages = useMessages();
   const t = messages.result;
   const state = useRoutineBuild(stored);
@@ -29,10 +29,10 @@ export function RoutineBuilder({ stored, onRetry }: { stored: StoredAnalysis; on
   }
 
   return (
-    <div role="status" className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
+    <output className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
       <Spinner size="lg" />
       <Heading level={2}>{t.buildingRoutine}</Heading>
       <Text tone="muted">{t.buildingRoutineBody}</Text>
-    </div>
+    </output>
   );
 }

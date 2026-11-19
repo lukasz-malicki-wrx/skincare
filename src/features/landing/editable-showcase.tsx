@@ -27,7 +27,7 @@ export function EditableShowcase() {
             <b>[YOUR BUDGET]</b>
           </div>
         </div>
-        <div className="mosaic__leaves photo photo--leaves" role="img" aria-label="Woman with a green leaf on her shoulder">
+        <div className="mosaic__leaves photo photo--leaves">
           <span className="tag tag--static">Vegan? Say it once.</span>
         </div>
         <div className="mosaic__dark">

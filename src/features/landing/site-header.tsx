@@ -2,7 +2,6 @@
 
 /* eslint-disable @next/next/no-img-element -- static brand image sized by landing.css */
 import Link from "next/link";
-import type { MouseEvent } from "react";
 import { routes } from "@/config/routes";
 import { useMessages } from "@/i18n/locale-provider";
 import { SECTION_LINKS } from "@/features/landing/sections";
@@ -11,10 +10,6 @@ import { useMobileMenu } from "@/features/landing/use-mobile-menu";
 export function SiteHeader() {
   const landing = useMessages().landing;
   const { open, toggle, close, toggleRef, menuRef } = useMobileMenu();
-
-  const closeOnLink = (e: MouseEvent<HTMLElement>) => {
-    if ((e.target as Element).closest("a")) close();
-  };
 
   return (
     <header className="site-header container">
@@ -46,13 +41,13 @@ export function SiteHeader() {
           <path className="menu-toggle__bottom" d="M4 16h16" />
         </svg>
       </button>
-      <nav ref={menuRef} className="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden={!open} onClick={closeOnLink}>
+      <nav ref={menuRef} className="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden={!open}>
         {SECTION_LINKS.map((link) => (
-          <a key={link.href} href={link.href}>
+          <a key={link.href} href={link.href} onClick={close}>
             {link.label}
           </a>
         ))}
-        <Link className="btn btn--primary" href={routes.app.home}>
+        <Link className="btn btn--primary" href={routes.app.home} onClick={close}>
           Scan my skin
         </Link>
       </nav>

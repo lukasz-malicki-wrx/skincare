@@ -21,7 +21,7 @@ export function ProgressBar({
   tone = "accent",
   size = "sm",
   className,
-}: {
+}: Readonly<{
   value: number;
   max: number;
   min?: number;
@@ -29,7 +29,7 @@ export function ProgressBar({
   tone?: keyof typeof TONES;
   size?: keyof typeof SIZES;
   className?: string;
-}) {
+}>) {
   const ratio = max > 0 ? Math.min(1, Math.max(0, value / max)) : 0;
   const a11y = label
     ? { role: "progressbar", "aria-label": label, "aria-valuemin": min, "aria-valuemax": max, "aria-valuenow": value }
@@ -38,7 +38,7 @@ export function ProgressBar({
   return (
     <div {...a11y} className={cn("overflow-hidden rounded-full", SIZES[size], className)}>
       <div
-        className={cn("h-full rounded-full transition-[width] duration-300", TONES[tone])}
+        className={cn("h-full rounded-full motion-safe:transition-[width] motion-safe:duration-300", TONES[tone])}
         style={{ width: `${ratio * 100}%` }}
       />
     </div>

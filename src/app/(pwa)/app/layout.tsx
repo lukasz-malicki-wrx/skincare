@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AppLayout({
   children,
-}: LayoutProps<typeof routes.app.home>) {
+}: Readonly<LayoutProps<typeof routes.app.home>>) {
   return (
     <div className="mx-auto flex h-dvh w-full max-w-md flex-col overflow-hidden border-x border-line bg-paper">
       <ServiceWorkerRegister />

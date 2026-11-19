@@ -13,14 +13,14 @@ export function MessageScreen({
   actions,
   alert = false,
   fullPage = false,
-}: {
+}: Readonly<{
   title: string;
   body: string;
   actions: ReactNode;
   /** Announce as an error (`role="alert"`). */
   alert?: boolean;
   fullPage?: boolean;
-}) {
+}>) {
   return (
     <div
       role={alert ? "alert" : undefined}

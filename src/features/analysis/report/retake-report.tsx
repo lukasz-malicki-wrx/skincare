@@ -6,7 +6,7 @@ import { useMessages } from "@/i18n/locale-provider";
 import { Heading } from "@/components/heading";
 import { Text } from "@/components/text";
 
-export function RetakeReport({ issue }: { issue: string | null }) {
+export function RetakeReport({ issue }: Readonly<{ issue: string | null }>) {
   const t = useMessages().result;
   return (
     <div className="flex flex-1 flex-col justify-center gap-6">

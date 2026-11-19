@@ -10,8 +10,7 @@ export function Hero() {
       <div className="hero__copy">
         <SpriteIcon id="i-star" className="hero__spark" aria-hidden="true" />
         <h1 className="hero__title">
-          <img className="hero__pill hero__pill--wide" src="/landing/img/redhead-side.jpg" alt="" />
-          Your skin, finally{" "}
+          <img className="hero__pill hero__pill--wide" src="/landing/img/redhead-side.jpg" alt="" />Your skin, finally{" "}
           <span className="nowrap">
             understood.
             <img className="hero__pill hero__pill--round" src="/landing/img/texture-side.jpg" alt="" />
@@ -48,11 +47,7 @@ export function Hero() {
 
       <div className="hero__visual">
         <div className="hero__stage">
-          <div
-            className="hero__photo photo photo--hero"
-            role="img"
-            aria-label="Woman with glowing, healthy skin, eyes closed in soft sunlight"
-          />
+          <div aria-hidden className="hero__photo photo photo--hero" />
           <div className="hero__outline" aria-hidden="true" />
           <PhoneMock />
           <div className="badge" aria-hidden="true">

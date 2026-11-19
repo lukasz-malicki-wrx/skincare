@@ -4,7 +4,7 @@ import { LineIcon } from "@/components/line-icon";
 /** Shared outline icons. Decorative (`aria-hidden`); the control around them carries the label. */
 type IconProps = { size?: number; strokeWidth?: number } & Omit<SVGProps<SVGSVGElement>, "width" | "height" | "children" | "strokeWidth">;
 
-export function CloseIcon({ size = 16, strokeWidth = 2, ...props }: IconProps) {
+export function CloseIcon({ size = 16, strokeWidth = 2, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M6 6l12 12M18 6L6 18" />
@@ -12,7 +12,7 @@ export function CloseIcon({ size = 16, strokeWidth = 2, ...props }: IconProps) {
   );
 }
 
-export function ArrowIcon({ size = 18, strokeWidth = 2, ...props }: IconProps) {
+export function ArrowIcon({ size = 18, strokeWidth = 2, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M5 12h14M13 6l6 6-6 6" />
@@ -20,7 +20,7 @@ export function ArrowIcon({ size = 18, strokeWidth = 2, ...props }: IconProps) {
   );
 }
 
-export function LockIcon({ size = 20, strokeWidth = 2, ...props }: IconProps) {
+export function LockIcon({ size = 20, strokeWidth = 2, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} strokeLinecap="round" {...props}>
       <rect x="5" y="11" width="14" height="10" rx="2" />
@@ -29,7 +29,7 @@ export function LockIcon({ size = 20, strokeWidth = 2, ...props }: IconProps) {
   );
 }
 
-export function CameraIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) {
+export function CameraIcon({ size = 20, strokeWidth = 1.5, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
@@ -38,7 +38,7 @@ export function CameraIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps
   );
 }
 
-export function MoonIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) {
+export function MoonIcon({ size = 20, strokeWidth = 1.5, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M19.5 14.5A7.5 7.5 0 1 1 9.5 4.5a6 6 0 0 0 10 10z" />
@@ -47,7 +47,7 @@ export function MoonIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) 
   );
 }
 
-export function ScanIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) {
+export function ScanIcon({ size = 20, strokeWidth = 1.5, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M3 7V4h3M18 4h3v3M21 17v3h-3M6 20H3v-3" />
@@ -56,7 +56,7 @@ export function ScanIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) 
   );
 }
 
-export function SparkIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) {
+export function SparkIcon({ size = 20, strokeWidth = 1.5, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M10 6c.9 4.6 1.8 5.5 6.5 6.5-4.7 1-5.6 1.9-6.5 6.5-.9-4.6-1.8-5.5-6.5-6.5 4.7-1 5.6-1.9 6.5-6.5z" />
@@ -65,7 +65,7 @@ export function SparkIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps)
   );
 }
 
-export function TrendIcon({ size = 20, strokeWidth = 1.5, ...props }: IconProps) {
+export function TrendIcon({ size = 20, strokeWidth = 1.5, ...props }: Readonly<IconProps>) {
   return (
     <LineIcon size={size} strokeWidth={strokeWidth} {...props}>
       <path d="M3 20h18" />

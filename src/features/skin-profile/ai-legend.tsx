@@ -5,7 +5,7 @@ import { useMessages } from "@/i18n/locale-provider";
 import { Text } from "@/components/text";
 
 /** Field label with an "AI" tag while the value is still the one the analysis suggested. */
-export function AiLegend({ ai, children }: { ai: boolean; children: ReactNode }) {
+export function AiLegend({ ai, children }: Readonly<{ ai: boolean; children: ReactNode }>) {
   const aiFilled = useMessages().profile.skin.aiFilled;
   return (
     <Text as="legend" variant="body-sm" tone="muted" className="flex items-center gap-2">

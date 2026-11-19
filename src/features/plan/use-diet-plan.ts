@@ -19,7 +19,7 @@ export function useDietPlan(request: DietRequest) {
   const [error, setError] = useState<unknown>(null);
   // The key is the request in canonical form: it is the effect's only dependency.
   const inputsKey = dietInputsKey(request);
-  const plan = saved && saved.inputsKey === inputsKey ? saved.plan : null;
+  const plan = saved?.inputsKey === inputsKey ? saved.plan : null;
   const loading = saved !== undefined && !plan && error === null;
 
   useEffect(() => {

@@ -52,12 +52,12 @@ export function Button({
   className,
   type = "button",
   ...props
-}: Appearance & ComponentProps<"button">) {
+}: Readonly<Appearance & ComponentProps<"button">>) {
   return <button type={type} className={appearance({ variant, size, fullWidth }, className)} {...props} />;
 }
 
 /** A Next.js `Link` that looks like a `Button`: navigation stays a link for semantics and prefetch. */
-export function ButtonLink({ variant, size, fullWidth, className, ...props }: Appearance & ComponentProps<typeof Link>) {
+export function ButtonLink({ variant, size, fullWidth, className, ...props }: Readonly<Appearance & ComponentProps<typeof Link>>) {
   return <Link className={appearance({ variant, size, fullWidth }, className)} {...props} />;
 }
 
@@ -68,7 +68,7 @@ export function ExternalButtonLink({
   fullWidth,
   className,
   ...props
-}: Appearance & Omit<ComponentProps<"a">, "target" | "rel">) {
+}: Readonly<Appearance & Omit<ComponentProps<"a">, "target" | "rel">>) {
   return (
     <a
       target="_blank"

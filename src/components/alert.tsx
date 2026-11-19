@@ -10,12 +10,12 @@ export function Alert({
   announce = true,
   size = "sm",
   className,
-}: {
+}: Readonly<{
   children: ReactNode;
   announce?: boolean;
   size?: "sm" | "md";
   className?: string;
-}) {
+}>) {
   return (
     <p
       role={announce ? "alert" : undefined}

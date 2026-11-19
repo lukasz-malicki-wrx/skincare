@@ -14,6 +14,6 @@ const DEFAULT_VARIANT: Record<keyof typeof TAGS, TextVariant> = {
  * h1 per screen, then h2, h3); `variant` follows the design. They are separate on purpose: a small
  * h1 label above a large h2 title is valid.
  */
-export function Heading({ level, variant, ...props }: { level: keyof typeof TAGS } & Omit<TextProps, "as">) {
+export function Heading({ level, variant, ...props }: Readonly<{ level: keyof typeof TAGS } & Omit<TextProps, "as">>) {
   return <Text as={TAGS[level]} variant={variant ?? DEFAULT_VARIANT[level]} {...props} />;
 }

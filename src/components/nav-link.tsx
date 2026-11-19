@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { AppNavItem } from "@/components/app-nav";
 import { NavLabel } from "@/components/nav-label";
 
-export function NavLink({ item, active }: { item: AppNavItem; active: boolean }) {
+export function NavLink({ item, active }: Readonly<{ item: AppNavItem; active: boolean }>) {
   return (
     <Link
       href={item.href}

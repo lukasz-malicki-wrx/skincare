@@ -101,7 +101,11 @@ body {
   text-transform: uppercase;
 }
 
-/* Analysis loader: a scan line over the photo and progress bars that fill one after another. */
+/*
+ * Analysis loader: a scan line over the photo and progress bars that fill one after another.
+ * Components apply these and every other animation through `motion-safe:`, so they never run
+ * when the user asks for reduced motion (WCAG 2.3.3).
+ */
 @keyframes scan {
   from { top: -6rem; }
   to { top: 100%; }
@@ -121,30 +125,13 @@ body {
 }
 
 /* Focus ring for a control whose real <input> is visually hidden inside its label (WCAG 2.4.7). */
-@utility focus-ring-within {
-  &:has(:focus-visible) {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 2px;
-  }
+.focus-ring-within:has(:focus-visible) {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
 }
 
 /* Visible keyboard focus on every background (WCAG 2.4.7); mouse clicks leave no ring. */
 :focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 2px;
-}
-
-/*
- * Reduced motion (WCAG 2.3.3): animations and transitions finish at once, keeping their end state
- * (filled progress bars) without the scan, spin or slide.
- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }

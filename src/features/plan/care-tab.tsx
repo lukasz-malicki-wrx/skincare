@@ -14,7 +14,7 @@ import type { StoredAnalysis } from "@/lib/skin-analysis";
 import type { SkinProfile } from "@/lib/skin-profile";
 import { Text } from "@/components/text";
 
-export function CareTab({ stored, profile }: { stored: StoredAnalysis; profile: SkinProfile }) {
+export function CareTab({ stored, profile }: Readonly<{ stored: StoredAnalysis; profile: SkinProfile }>) {
   const copy = useMessages().plan;
   const { swaps, swap, reset } = usePlanSwaps();
   const [period, setPeriod] = useSearchParamOption("period", PERIODS, "morning");

@@ -17,7 +17,7 @@ import { TextLink } from "@/components/text-link";
 import { Input } from "@/components/input";
 
 /** Screen 15: eat more / limit, filtered by the diet restrictions from the profile. Loaded lazily. */
-export function DietView({ stored, profile }: { stored: StoredAnalysis; profile: SkinProfile }) {
+export function DietView({ stored, profile }: Readonly<{ stored: StoredAnalysis; profile: SkinProfile }>) {
   const locale = useLocale();
   const messages = useMessages();
   const copy = messages.plan.dietList;

@@ -10,12 +10,12 @@ export function SlideNav({
   total,
   exit,
   onGoTo,
-}: {
+}: Readonly<{
   index: number;
   total: number;
   exit: { href: string; label: string };
   onGoTo: (index: number) => void;
-}) {
+}>) {
   const t = useMessages().result;
   return (
     <nav

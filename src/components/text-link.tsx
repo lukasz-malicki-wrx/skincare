@@ -14,6 +14,6 @@ export function TextLink({
   variant = "inline",
   className,
   ...props
-}: { variant?: keyof typeof VARIANTS } & ComponentProps<typeof Link>) {
+}: Readonly<{ variant?: keyof typeof VARIANTS } & ComponentProps<typeof Link>>) {
   return <Link className={cn(VARIANTS[variant], className)} {...props} />;
 }

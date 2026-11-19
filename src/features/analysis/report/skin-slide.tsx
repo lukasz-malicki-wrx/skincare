@@ -8,7 +8,7 @@ import { Alert } from "@/components/alert";
 import { Heading } from "@/components/heading";
 import { Text } from "@/components/text";
 
-export function SkinSlide({ stored }: { stored: StoredAnalysis }) {
+export function SkinSlide({ stored }: Readonly<{ stored: StoredAnalysis }>) {
   const t = useMessages();
   const r = stored.result;
   return (

@@ -11,7 +11,7 @@ import { Text } from "@/components/text";
 import { Card } from "@/components/card";
 
 /** Status line plus cancel in two taps. The checkout itself is mocked on the paywall. */
-export function SubscriptionControls({ subscription }: { subscription: Subscription }) {
+export function SubscriptionControls({ subscription }: Readonly<{ subscription: Subscription }>) {
   const locale = useLocale();
   const copy = useMessages().profile.subscription;
   const [confirming, setConfirming] = useState(false);

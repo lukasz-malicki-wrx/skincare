@@ -8,14 +8,14 @@ const SIZES = {
 } as const;
 
 /** Decorative loading ring. The surrounding text says what is loading. */
-export function Spinner({ size = "sm" }: { size?: keyof typeof SIZES }) {
-  return <span aria-hidden className={cn("inline-block shrink-0 animate-spin rounded-full", SIZES[size])} />;
+export function Spinner({ size = "sm" }: Readonly<{ size?: keyof typeof SIZES }>) {
+  return <span aria-hidden className={cn("inline-block shrink-0 rounded-full motion-safe:animate-spin", SIZES[size])} />;
 }
 
 /** A spinner with its label on one line, announced politely to screen readers. */
-export function InlineLoading({ label }: { label: string }) {
+export function InlineLoading({ label }: Readonly<{ label: string }>) {
   return (
-    <Text role="status" variant="body-sm" tone="muted" className="flex items-center gap-2">
+    <Text as="output" variant="body-sm" tone="muted" className="flex items-center gap-2">
       <Spinner />
       {label}
     </Text>

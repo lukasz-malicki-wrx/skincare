@@ -14,7 +14,7 @@ const STAGE_TEXT: Record<StageStatus, Pick<TextProps, "tone" | "weight">> = {
 };
 
 /** The mocked payment: three steps tick off one by one, then the plan opens. */
-export function Processing({ stage, stages }: { stage: number; stages: string[] }) {
+export function Processing({ stage, stages }: Readonly<{ stage: number; stages: string[] }>) {
   const copy = useMessages().paywall;
   const done = stage >= stages.length;
 
@@ -31,7 +31,7 @@ export function Processing({ stage, stages }: { stage: number; stages: string[] 
         )}
       </div>
       {/* The live region wraps the list so the list keeps its semantics. */}
-      <div role="status">
+      <output className="block">
         <ul className="flex flex-col gap-2">
           {stages.map((label, i) => {
             const status = stageStatus(i, stage);
@@ -45,7 +45,7 @@ export function Processing({ stage, stages }: { stage: number; stages: string[] 
             );
           })}
         </ul>
-      </div>
+      </output>
       {done && (
         <div className="flex flex-col gap-1">
           <Text variant="title-lg">{copy.acceptedTitle}</Text>

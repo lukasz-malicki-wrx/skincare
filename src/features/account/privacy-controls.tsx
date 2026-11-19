@@ -17,7 +17,7 @@ import { Card } from "@/components/card";
 const LOCAL_KEYS = [STORAGE_KEY, PROFILE_KEY, PLAN_KEY, DIET_KEY, REMINDERS_KEY];
 
 /** Photos and analyses live only in this browser, so "delete" clears them here. The account row is deleted on the server. */
-export function PrivacyControls({ email }: { email: string }) {
+export function PrivacyControls({ email }: Readonly<{ email: string }>) {
   const copy = useMessages().profile.privacy;
   const [photosCleared, setPhotosCleared] = useState(false);
   const [confirming, setConfirming] = useState(false);

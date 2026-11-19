@@ -23,14 +23,12 @@ export function PrivacySection() {
                   <circle cx="12" cy="12" r="9" />
                   <path d="M5.6 5.6l12.8 12.8" />
                 </LineIcon>
-              </span>
-              Never sold or shared
+              </span>Never sold or shared
             </li>
             <li>
               <span className="assurances__icon">
                 <LockIcon size={18} strokeWidth={1.6} />
-              </span>
-              Only you can see them
+              </span>Only you can see them
             </li>
           </ul>
           <p className="privacy__note">
@@ -40,11 +38,7 @@ export function PrivacySection() {
         </div>
         <div className="privacy__visual">
           <div className="vault">
-            <div
-              className="vault__photo photo photo--privacy"
-              role="img"
-              aria-label="Smiling woman resting her head on a white pillow"
-            />
+            <div aria-hidden className="vault__photo photo photo--privacy" />
             <span className="vault__lock" aria-hidden="true">
               <LockIcon size={26} strokeWidth={1.6} />
             </span>

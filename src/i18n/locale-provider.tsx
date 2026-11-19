@@ -9,10 +9,10 @@ const LocaleContext = createContext<Locale>("en");
 export function LocaleProvider({
   locale,
   children,
-}: {
+}: Readonly<{
   locale: Locale;
   children: React.ReactNode;
-}) {
+}>) {
   return <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>;
 }
 

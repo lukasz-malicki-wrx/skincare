@@ -2,6 +2,6 @@
 
 import { ErrorScreen } from "@/components/error-screen";
 
-export default function Error(props: { error: Error & { digest?: string }; retry: () => void }) {
+export default function SegmentError(props: Readonly<{ error: Error & { digest?: string }; retry: () => void }>) {
   return <ErrorScreen {...props} />;
 }

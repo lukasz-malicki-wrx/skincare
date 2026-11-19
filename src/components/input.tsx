@@ -9,7 +9,7 @@ const SIZES = {
 } as const;
 
 /** A text-like input. Always give it a `<label>` or an `aria-label`; `className` is for layout only. */
-export function Input({ size = "md", className, ...props }: { size?: keyof typeof SIZES } & Omit<ComponentProps<"input">, "size">) {
+export function Input({ size = "md", className, ...props }: Readonly<{ size?: keyof typeof SIZES } & Omit<ComponentProps<"input">, "size">>) {
   return (
     <input
       className={cn("border border-line bg-surface text-ink disabled:opacity-50", SIZES[size], className)}

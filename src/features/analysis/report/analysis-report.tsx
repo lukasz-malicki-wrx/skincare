@@ -15,7 +15,7 @@ const NO_PRODUCTS: RoutineProductsState = { status: "skipped" };
  * Swipeable stepper. Each slide fills the screen with its content centred; the footer with
  * Back, dots and Next sticks to the bottom and the top bar follows the slides.
  */
-export function AnalysisReport({ part }: { part: ReportPart }) {
+export function AnalysisReport({ part }: Readonly<{ part: ReportPart }>) {
   const stored = useStoredAnalysis();
   if (stored === undefined) return null;
   if (!stored) return <EmptyReport />;

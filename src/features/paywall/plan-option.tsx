@@ -11,7 +11,7 @@ export function PlanOption({
   price,
   period,
   onSelect,
-}: {
+}: Readonly<{
   selected: boolean;
   badge: string | null;
   title: string;
@@ -19,7 +19,7 @@ export function PlanOption({
   price: string;
   period: string;
   onSelect: () => void;
-}) {
+}>) {
   return (
     <label
       className={cn(

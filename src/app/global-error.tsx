@@ -9,7 +9,7 @@ import "./globals.css";
  * Last-resort boundary when the root layout itself fails. It replaces the whole document, so it
  * has no locale or providers: the copy is plain English and the styles come from globals.css.
  */
-export default function GlobalError({ error, retry }: { error: Error & { digest?: string }; retry: () => void }) {
+export default function GlobalError({ error, retry }: Readonly<{ error: Error & { digest?: string }; retry: () => void }>) {
   useEffect(() => {
     reportError(error);
   }, [error]);

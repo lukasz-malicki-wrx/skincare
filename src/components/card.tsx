@@ -27,11 +27,11 @@ export function Card({
   padding,
   className,
   ...props
-}: CardStyle & { as?: "div" | "li" | "section" } & HTMLAttributes<HTMLElement>) {
+}: Readonly<CardStyle & { as?: "div" | "li" | "section" } & HTMLAttributes<HTMLElement>>) {
   return <Tag className={cardClasses({ tone, padding }, className)} {...props} />;
 }
 
 /** A whole card that navigates, for a summary that opens its detail screen. */
-export function CardLink({ tone, padding, className, ...props }: CardStyle & ComponentProps<typeof Link>) {
+export function CardLink({ tone, padding, className, ...props }: Readonly<CardStyle & ComponentProps<typeof Link>>) {
   return <Link className={cardClasses({ tone, padding }, className)} {...props} />;
 }

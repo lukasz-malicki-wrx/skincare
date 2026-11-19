@@ -5,9 +5,9 @@ import { requireSessionUser } from "@/lib/auth";
 
 export default async function ShellLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   await requireSessionUser();
 
   const t = await getTranslations();

@@ -14,12 +14,12 @@ export const DietList = memo(function DietList({
   title,
   items,
   onRemove,
-}: {
+}: Readonly<{
   list: DietListName;
   title: string;
   items: DietItem[];
   onRemove: (list: DietListName, item: DietItem) => void;
-}) {
+}>) {
   const copy = useMessages().plan.dietList;
   return (
     <section className="flex flex-col gap-2">

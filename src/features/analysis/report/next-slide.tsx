@@ -8,7 +8,7 @@ import { Heading } from "@/components/heading";
 import { Text } from "@/components/text";
 import { TextLink } from "@/components/text-link";
 
-export function NextSlide({ result }: { result: SkinAnalysis }) {
+export function NextSlide({ result }: Readonly<{ result: SkinAnalysis }>) {
   const t = useMessages().result;
   return (
     <>

@@ -28,7 +28,7 @@ export function IconSprite() {
   );
 }
 
-export function SpriteIcon({ id, ...props }: { id: SpriteId } & SVGProps<SVGSVGElement>) {
+export function SpriteIcon({ id, ...props }: Readonly<{ id: SpriteId } & SVGProps<SVGSVGElement>>) {
   return (
     <svg {...props}>
       <use href={`#${id}`} />

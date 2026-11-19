@@ -17,11 +17,11 @@ export function ReportSlides({
   stored,
   part,
   products,
-}: {
+}: Readonly<{
   stored: StoredAnalysis;
   part: ReportPart;
   products: RoutineProductsState;
-}) {
+}>) {
   const t = useMessages();
   const r = stored.result;
   const slides = slidesFor(r, part);
@@ -39,8 +39,9 @@ export function ReportSlides({
       <ol
         ref={trackRef}
         onScroll={onScroll}
-        // Focusable so keyboard users can scroll it with the arrow keys (WCAG 2.1.1).
-        tabIndex={0}
+        // Scrollable regions must be focusable so keyboard users can scroll them (WCAG 2.1.1,
+        // axe scrollable-region-focusable), which outranks the rule against tabIndex on lists.
+        tabIndex={0} // NOSONAR typescript:S6845
         aria-roledescription="carousel"
         aria-label={part === "skin" ? t.result.title : t.result.planTitle}
         className="flex flex-1 snap-x snap-mandatory overflow-x-auto [scrollbar-width:none]"

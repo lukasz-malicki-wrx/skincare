@@ -69,7 +69,7 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({
   children,
-}: LayoutProps<typeof routes.home>) {
+}: Readonly<LayoutProps<typeof routes.home>>) {
   const locale = await getLocale();
 
   return (

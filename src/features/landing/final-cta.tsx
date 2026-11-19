@@ -14,7 +14,7 @@ export function FinalCta() {
           </Link>
         </div>
         <div className="final__visual">
-          <div className="final__photo photo photo--final" role="img" aria-label="Close-up of freckled skin, eyes closed" />
+          <div aria-hidden className="final__photo photo photo--final" />
           <div className="final__outline" aria-hidden="true" />
         </div>
       </div>

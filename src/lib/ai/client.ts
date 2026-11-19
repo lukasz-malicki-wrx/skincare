@@ -51,15 +51,11 @@ export function outcomeOf<T>(res: ParsedResponse<T>): AiOutcome<T> {
  * AnthropicError (not an APIError). One retry is usually enough.
  */
 export async function withParseRetry<T>(request: () => Promise<T>, attempts = 2): Promise<T> {
-  let lastError: unknown;
-  for (let i = 0; i < attempts; i++) {
-    try {
-      return await request();
-    } catch (err) {
-      const isParseError = err instanceof Anthropic.AnthropicError && !(err instanceof Anthropic.APIError);
-      if (!isParseError) throw err;
-      lastError = err;
-    }
+  try {
+    return await request();
+  } catch (err) {
+    const isParseError = err instanceof Anthropic.AnthropicError && !(err instanceof Anthropic.APIError);
+    if (!isParseError || attempts <= 1) throw err;
+    return withParseRetry(request, attempts - 1);
   }
-  throw lastError;
 }

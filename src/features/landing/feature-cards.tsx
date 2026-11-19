@@ -8,7 +8,7 @@ export function FeatureCards() {
   return (
     <div className="feature-cards">
       <article className="feature">
-        <div className="feature__visual photo photo--report" role="img" aria-label="Close-up of freckled skin texture">
+        <div className="feature__visual photo photo--report">
           <CornerButton />
           <div className="bubble bubble--start">
             <b>What&apos;s going on:</b> mild dehydration around the cheeks.
@@ -28,8 +28,6 @@ export function FeatureCards() {
       <article className="feature">
         <div
           className="feature__visual feature__visual--start photo photo--scan"
-          role="img"
-          aria-label="Smiling woman with freckles touching her cheek"
         >
           <CornerButton />
           <div className="barcode" aria-hidden="true">
@@ -55,7 +53,7 @@ export function FeatureCards() {
       </article>
 
       <article className="feature">
-        <div className="feature__visual photo photo--swap" role="img" aria-label="Man using a rose quartz face roller">
+        <div className="feature__visual photo photo--swap">
           <CornerButton />
           <div className="swap">
             <span className="swap__icon">

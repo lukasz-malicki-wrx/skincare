@@ -19,6 +19,16 @@ each release is a git tag `vX.Y.Z` deployed from `main` (see docs/compliance/cha
 - Account deletion runs as one transaction.
 - Dependencies pinned to exact versions.
 
+### Security
+- GitHub Actions pinned to full commit SHAs (SonarCloud githubactions:S7637).
+
 ### Fixed
+- Landing feature cards no longer use `role="img"`, which hid their text from screen readers;
+  decorative photos are hidden from assistive technology instead.
+- Animations run only under `motion-safe:` instead of being overridden with `!important`.
+- Live status messages use `<output>`; tab keyboard handling sits on the tabs themselves; the
+  mobile menu closes from its links rather than a click handler on `<nav>`.
+- SonarCloud findings on the first pull request: renamed `Error` boundaries, read-only props,
+  duplicate CSS selectors, ambiguous JSX spacing, retry without `await` in a loop.
 - The report carousel can be focused and scrolled from the keyboard (WCAG 2.1.1).
 - The installed app no longer locks the screen to portrait (WCAG 1.3.4).

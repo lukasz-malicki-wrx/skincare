@@ -6,7 +6,7 @@ import type { RoutineProductsState } from "@/features/analysis/report/use-routin
 import { useMessages } from "@/i18n/locale-provider";
 import { Text } from "@/components/text";
 
-export function StepProduct({ state, stepKey }: { state: RoutineProductsState; stepKey: string }) {
+export function StepProduct({ state, stepKey }: Readonly<{ state: RoutineProductsState; stepKey: string }>) {
   const t = useMessages().result;
   if (state.status === "skipped") return null;
 

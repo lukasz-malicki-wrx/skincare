@@ -6,7 +6,7 @@ export function LineIcon({
   strokeWidth = 1.5,
   children,
   ...props
-}: { size: number; strokeWidth?: number; children: ReactNode } & Omit<SVGProps<SVGSVGElement>, "width" | "height">) {
+}: Readonly<{ size: number; strokeWidth?: number; children: ReactNode } & Omit<SVGProps<SVGSVGElement>, "width" | "height">>) {
   return (
     <svg
       width={size}

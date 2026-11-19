@@ -142,6 +142,11 @@ The review checklist is `.claude/skills/fe-review/SKILL.md`; this file is its pr
   `modelLanguageInstruction`.
 - Colours and type from the Tailwind theme tokens in `src/app/globals.css` (mirrored in
   `src/config/brand.ts`), not `#hex` values.
+- Animations and transitions only through `motion-safe:` (`motion-safe:animate-spin`), never
+  overridden later with `!important`. Status messages use `<output>` (`Text as="output"`), not
+  `role="status"`. Decorative images are `aria-hidden`; never put `role="img"` on an element with
+  content. Component props are `Readonly<...>`.
+- GitHub Actions are pinned to full commit SHAs with the version in a comment.
 - Accessibility is part of done: real buttons and links, `role="alert"` for errors,
   `role="status"` for loading text, labels on icon buttons, `aria-invalid`/`aria-describedby` on
   failed fields, keyboard support for custom widgets.

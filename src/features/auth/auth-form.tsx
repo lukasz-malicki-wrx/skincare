@@ -20,12 +20,12 @@ export function AuthForm({
   submitLabel,
   fields,
   alternate,
-}: {
+}: Readonly<{
   action: (prev: AuthFormState, formData: FormData) => Promise<AuthFormState>;
   submitLabel: string;
   fields: Field[];
   alternate: { href: string; label: string };
-}) {
+}>) {
   const [state, formAction, pending] = useActionState(action, null);
   const errorId = useId();
   // Controlled on purpose: React resets a form after its action runs, and a failed sign-in

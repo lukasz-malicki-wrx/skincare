@@ -17,11 +17,11 @@ export function ProductDialog({
   step,
   onSwap,
   onClose,
-}: {
+}: Readonly<{
   step: PlanStep;
   onSwap: (step: PlanStep) => void;
   onClose: () => void;
-}) {
+}>) {
   const copy = useMessages().plan;
   const ref = useRef<HTMLDialogElement>(null);
   const product = step.product;

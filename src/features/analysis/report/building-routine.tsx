@@ -9,7 +9,7 @@ import type { StoredAnalysis } from "@/lib/skin-analysis";
  * Once it is saved the stored report has `routineReady: true` and AnalysisReport switches to the
  * plan. A new `key` restarts the request on retry.
  */
-export function BuildingRoutine({ stored }: { stored: StoredAnalysis }) {
+export function BuildingRoutine({ stored }: Readonly<{ stored: StoredAnalysis }>) {
   const [attempt, setAttempt] = useState(0);
   const retry = useCallback(() => setAttempt((n) => n + 1), []);
   return <RoutineBuilder key={attempt} stored={stored} onRetry={retry} />;

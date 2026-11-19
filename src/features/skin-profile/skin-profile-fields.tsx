@@ -16,13 +16,13 @@ export function SkinProfileFields({
   submitLabel,
   nextHref,
   onSave,
-}: {
+}: Readonly<{
   initial: SkinProfile;
   ai: { skinType: boolean; allergies: boolean };
   submitLabel: string;
   nextHref: string;
   onSave: (p: SkinProfile) => void;
-}) {
+}>) {
   const router = useRouter();
   const copy = useMessages().profile.skin;
   const budgetId = useId();

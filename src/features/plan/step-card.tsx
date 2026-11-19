@@ -16,12 +16,12 @@ export const StepCard = memo(function StepCard({
   onOpen,
   onSwap,
   onReset,
-}: {
+}: Readonly<{
   step: PlanStep;
   onOpen: (stepKey: string) => void;
   onSwap: (step: PlanStep) => void;
   onReset: (stepKey: string) => void;
-}) {
+}>) {
   const copy = useMessages().plan;
   const p = step.product;
   const canSwap = nextCandidate(step) !== null;

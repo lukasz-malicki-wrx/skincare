@@ -2,7 +2,7 @@ import { formatPln } from "@/i18n/format";
 import type { Product } from "@/lib/products";
 import { Text } from "@/components/text";
 
-export function ProductLink({ product }: { product: Product }) {
+export function ProductLink({ product }: Readonly<{ product: Product }>) {
   return (
     <a
       href={product.url}

@@ -15,12 +15,12 @@ export function RoutineSlide({
   period,
   steps,
   products,
-}: {
+}: Readonly<{
   title: string;
   period: "morning" | "evening";
   steps: RoutineStepData[];
   products: RoutineProductsState;
-}) {
+}>) {
   const stepsLabel = useMessages().result.steps;
   return (
     <>

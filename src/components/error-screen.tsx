@@ -10,7 +10,7 @@ import { useMessages } from "@/i18n/locale-provider";
  * Fallback for the app's error boundaries (`error.tsx`). The error goes to `reportError`, which
  * reaches the browser console and any `error` listener a monitoring script installs.
  */
-export function ErrorScreen({ error, retry }: { error: Error & { digest?: string }; retry: () => void }) {
+export function ErrorScreen({ error, retry }: Readonly<{ error: Error & { digest?: string }; retry: () => void }>) {
   const copy = useMessages().errorPage;
 
   useEffect(() => {

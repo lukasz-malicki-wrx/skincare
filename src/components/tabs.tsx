@@ -41,17 +41,17 @@ export function Tabs<T extends string>({
   value,
   onChange,
   variant = "segmented",
-}: {
+}: Readonly<{
   id: string;
   label: string;
   options: readonly TabOption<T>[];
   value: T;
   onChange: (next: T) => void;
   variant?: keyof typeof STYLES;
-}) {
+}>) {
   const styles = STYLES[variant];
 
-  function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+  function onKeyDown(e: KeyboardEvent<HTMLButtonElement>) {
     const move = NEXT_KEYS[e.key];
     if (!move) return;
     e.preventDefault();
@@ -62,7 +62,7 @@ export function Tabs<T extends string>({
   }
 
   return (
-    <div role="tablist" aria-label={label} className={styles.list} onKeyDown={onKeyDown}>
+    <div role="tablist" aria-label={label} className={styles.list}>
       {options.map((option) => {
         const selected = option.value === value;
         return (
@@ -75,6 +75,7 @@ export function Tabs<T extends string>({
             aria-controls={panelId(id)}
             tabIndex={selected ? 0 : -1}
             onClick={() => onChange(option.value)}
+            onKeyDown={onKeyDown}
             className={cn(styles.tab, selected ? styles.active : styles.idle)}
           >
             {option.label}
@@ -85,7 +86,7 @@ export function Tabs<T extends string>({
   );
 }
 
-export function TabPanel({ id, value, children }: { id: string; value: string; children: ReactNode }) {
+export function TabPanel({ id, value, children }: Readonly<{ id: string; value: string; children: ReactNode }>) {
   return (
     <div role="tabpanel" id={panelId(id)} aria-labelledby={tabId(id, value)} className="flex flex-col gap-5">
       {children}

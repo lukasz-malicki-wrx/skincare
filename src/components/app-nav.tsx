@@ -5,7 +5,7 @@ import { NavLink } from "@/components/nav-link";
 
 export type AppNavItem = { href: string; label: string };
 
-export function AppNav({ items }: { items: readonly AppNavItem[] }) {
+export function AppNav({ items }: Readonly<{ items: readonly AppNavItem[] }>) {
   const pathname = usePathname();
 
   return (

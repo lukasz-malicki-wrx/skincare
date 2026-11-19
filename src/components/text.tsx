@@ -29,8 +29,11 @@ const WEIGHTS = { regular: "", medium: "font-medium", semibold: "font-semibold" 
 
 export type TextVariant = keyof typeof VARIANTS;
 
-/** `legend` and `label` keep their form semantics; headings come through `Heading`. */
-type TextTag = "p" | "span" | "div" | "legend" | "label" | "h1" | "h2" | "h3" | "h4";
+/**
+ * `legend` and `label` keep their form semantics; `output` is a polite live region (status).
+ * Headings come through `Heading`.
+ */
+type TextTag = "p" | "span" | "div" | "legend" | "label" | "output" | "h1" | "h2" | "h3" | "h4";
 
 export type TextProps = {
   as?: TextTag;
@@ -51,6 +54,6 @@ export function Text({
   weight = "regular",
   className,
   ...props
-}: TextProps) {
+}: Readonly<TextProps>) {
   return <Tag className={cn(VARIANTS[variant], TONES[tone], WEIGHTS[weight], className)} {...props} />;
 }

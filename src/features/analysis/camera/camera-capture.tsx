@@ -81,7 +81,7 @@ export function CameraCapture() {
         )}
 
         {live && cameraStatus.kind === "starting" && (
-          <Text role="status" variant="body-sm" tone="inverse" className="absolute inset-x-0 top-4 text-center">
+          <Text as="output" variant="body-sm" tone="inverse" className="absolute inset-x-0 top-4 block text-center">
             {t.photo.starting}
           </Text>
         )}

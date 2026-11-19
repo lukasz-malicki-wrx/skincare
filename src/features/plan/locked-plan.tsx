@@ -8,7 +8,7 @@ import { Text } from "@/components/text";
 import { Card } from "@/components/card";
 import { StepNumber } from "@/components/step-number";
 
-export function LockedPlan({ copy }: { copy: Messages["plan"] }) {
+export function LockedPlan({ copy }: Readonly<{ copy: Messages["plan"] }>) {
   const preview = [copy.preview.cleanser, copy.preview.serum, copy.preview.moisturizer, copy.preview.spf];
 
   return (

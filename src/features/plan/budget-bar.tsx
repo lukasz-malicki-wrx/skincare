@@ -8,7 +8,7 @@ import { Text } from "@/components/text";
 import { TextLink } from "@/components/text-link";
 import { Card } from "@/components/card";
 
-export function BudgetBar({ total, budget }: { total: number; budget: number }) {
+export function BudgetBar({ total, budget }: Readonly<{ total: number; budget: number }>) {
   const copy = useMessages().plan;
   const over = total - budget;
   return (

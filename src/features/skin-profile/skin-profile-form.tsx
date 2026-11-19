@@ -14,12 +14,12 @@ export function SkinProfileForm({
   submitLabel,
   nextHref,
   rebuildRoutine = false,
-}: {
+}: Readonly<{
   submitLabel: string;
   nextHref: string;
   /** Onboarding: saving the form marks the routine as not built, so the plan screen rebuilds it from these answers. */
   rebuildRoutine?: boolean;
-}) {
+}>) {
   const [saved, setProfile] = useLocalJson(PROFILE_KEY, parseProfile);
   const stored = useStoredAnalysis();
 

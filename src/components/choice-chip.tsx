@@ -21,7 +21,7 @@ export const ChoiceChip = memo(function ChoiceChip({
   checked,
   onChange,
   children,
-}: {
+}: Readonly<{
   /** `sm` for tag-like chips, `md` for a row of button-sized options. */
   size?: keyof typeof SIZES;
   type: "radio" | "checkbox";
@@ -30,7 +30,7 @@ export const ChoiceChip = memo(function ChoiceChip({
   checked: boolean;
   onChange: (value: string) => void;
   children: ReactNode;
-}) {
+}>) {
   return (
     <label
       className={cn(

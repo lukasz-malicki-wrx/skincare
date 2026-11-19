@@ -17,9 +17,9 @@ export function ResumeRoutine() {
   }, [router]);
 
   return (
-    <div role="status" className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
+    <output className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
       <Spinner size="lg" />
       <Text tone="muted">{copy.buildingRoutine}</Text>
-    </div>
+    </output>
   );
 }
