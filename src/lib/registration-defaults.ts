@@ -1,3 +1,4 @@
+import "server-only";
 import { randomBytes } from "node:crypto";
 
 const NAMES = ["Maja", "Ola", "Jan", "Adam", "Ewa", "Piotr", "Anna", "Leon"];

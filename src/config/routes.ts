@@ -1,21 +1,20 @@
 export const routes = {
   home: "/",
   app: {
-    home: "/aplikacja",
-    signIn: "/aplikacja/sign-in",
-    signUp: "/aplikacja/sign-up",
-    /** Onboarding: a separate flow without the bottom bar. Screen numbers follow scope-mvp.md. */
+    home: "/app",
+    signIn: "/app/sign-in",
+    signUp: "/app/sign-up",
+    /** Onboarding: a separate flow without the bottom bar. */
     onboarding: {
-      photo: "/aplikacja/start/zdjecie", // screen 4
-      report: "/aplikacja/start/raport", // screen 7
-      profile: "/aplikacja/start/profil", // screens 8 and 9
-      plan: "/aplikacja/start/plan", // care plan with products, built after the form
-      paywall: "/aplikacja/start/paywall", // screen 10
+      photo: "/app/start/photo",
+      report: "/app/start/report",
+      profile: "/app/start/profile",
+      plan: "/app/start/plan",
+      paywall: "/app/start/paywall",
     },
-    /** Tabs after onboarding. */
-    today: "/aplikacja/dzis",
-    plan: "/aplikacja/plan",
-    profile: "/aplikacja/profil",
-    skinProfile: "/aplikacja/profil/skora", // screens 8 and 9 as one edit form
+    today: "/app/today",
+    plan: "/app/plan",
+    profile: "/app/profile",
+    skinProfile: "/app/profile/skin",
   },
 } as const;

@@ -25,11 +25,11 @@ const OTHER_PAGES = [
   "not a url",
 ];
 
-test("looksLikeProductPage accepts product pages of the allowed shops", () => {
+test("REQ-AI-03 looksLikeProductPage accepts product pages of the allowed shops", () => {
   for (const url of PRODUCT_PAGES) assert.equal(looksLikeProductPage(url), true, url);
 });
 
-test("looksLikeProductPage rejects category, search, blog and unknown pages", () => {
+test("REQ-AI-03 looksLikeProductPage rejects category, search, blog and unknown pages", () => {
   for (const url of OTHER_PAGES) assert.equal(looksLikeProductPage(url), false, url);
 });
 

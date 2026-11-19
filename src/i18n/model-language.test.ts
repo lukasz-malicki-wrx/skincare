@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { chosenLocale, modelLanguageInstruction } from "./model-language.ts";
 
-test("modelLanguageInstruction names only the app language", () => {
+test("REQ-I18N-01 modelLanguageInstruction names only the app language", () => {
   assert.match(modelLanguageInstruction("pl"), /in Polish only/);
   assert.match(modelLanguageInstruction("en"), /in English only/);
   assert.doesNotMatch(modelLanguageInstruction("en"), /Polish/);

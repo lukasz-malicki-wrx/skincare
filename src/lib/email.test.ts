@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { isValidEmail, normalizeEmail } from "./email.ts";
 
-test("isValidEmail accepts any well-formed address", () => {
+test("REQ-AUTH-04 isValidEmail accepts any well-formed address", () => {
   const cases: Array<[string, boolean]> = [
     ["anna@example.com", true],
     ["  Anna.Nowak@Mail.PL ", true],

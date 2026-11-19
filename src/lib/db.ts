@@ -1,3 +1,4 @@
+import "server-only";
 import { createClient, type Client } from "@libsql/client";
 
 const globalForDb = globalThis as unknown as {
@@ -38,6 +39,21 @@ CREATE TABLE IF NOT EXISTS sessions (
   user_id INTEGER NOT NULL REFERENCES users(id),
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+-- Append-only audit trail: no foreign key, so entries outlive a deleted account, and triggers
+-- reject any UPDATE or DELETE.
+CREATE TABLE IF NOT EXISTS audit_events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  occurred_at TEXT NOT NULL,
+  user_id INTEGER,
+  action TEXT NOT NULL,
+  details TEXT NOT NULL DEFAULT '{}'
+);
+CREATE INDEX IF NOT EXISTS audit_events_user ON audit_events (user_id);
+CREATE TRIGGER IF NOT EXISTS audit_events_no_update BEFORE UPDATE ON audit_events
+BEGIN SELECT RAISE(ABORT, 'audit_events is append-only'); END;
+CREATE TRIGGER IF NOT EXISTS audit_events_no_delete BEFORE DELETE ON audit_events
+BEGIN SELECT RAISE(ABORT, 'audit_events is append-only'); END;
 
 CREATE TABLE IF NOT EXISTS subscriptions (
   user_id INTEGER PRIMARY KEY REFERENCES users(id),

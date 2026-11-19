@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Types
+        run: pnpm typecheck
+      - name: Lint
+        run: pnpm lint
+      - name: Unit and integration tests
+        run: pnpm test
+      - name: Requirement traceability
+        run: |
+          pnpm traceability
+          node scripts/check-traceability.mjs --matrix | diff - docs/compliance/traceability-matrix.md
+      - name: Build
+        run: pnpm build
+        env:
+          TURSO_DATABASE_URL: file:data/ci.db
+          TURSO_AUTH_TOKEN: ci
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: End-to-end and accessibility tests
+        run: pnpm test:e2e
+      - name: Keep the e2e report as validation evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: e2e-report-${{ github.sha }}
+          path: e2e-report
+          retention-days: 90

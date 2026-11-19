@@ -7,7 +7,7 @@ export function ServiceWorkerRegister() {
     if (!("serviceWorker" in navigator)) return;
 
     navigator.serviceWorker.register("/sw.js").catch((error: unknown) => {
-      console.error("Service worker registration failed", error);
+      reportError(error);
     });
   }, []);
 

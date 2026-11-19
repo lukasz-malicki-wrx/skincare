@@ -1,5 +1,7 @@
 # SkinCode — pielęgnacja skóry z jednego zdjęcia
 
+[![CI](https://github.com/lukasz-malicki-wrx/skincare/actions/workflows/ci.yml/badge.svg)](https://github.com/lukasz-malicki-wrx/skincare/actions/workflows/ci.yml)
+
 SkinCode to aplikacja PWA, która na podstawie jednego zdjęcia skóry przygotowuje raport, poranną i wieczorną rutynę pielęgnacyjną, listę produktów w zadanym budżecie oraz listę produktów spożywczych wspierających skórę. Analizę zdjęcia i dobór planu wykonuje model Claude (Anthropic) z odpowiedziami walidowanymi schematami Zod.
 
 Aplikacja ma charakter kosmetyczny, nie medyczny: opisuje wygląd skóry i proponuje pielęgnację, a przy zmianach wymagających konsultacji odsyła do dermatologa.
@@ -40,21 +42,37 @@ Płatność za subskrypcję jest symulowana (animowany mock, bez operatora płat
 - **PWA** — manifest, service worker, instalacja na ekranie głównym, przypomnienia
 - Dwa języki interfejsu: polski i angielski (`src/i18n`)
 
+## Jak to jest zbudowane
+
+- **Granica serwer/klient.** Baza, sesje, hasła i klient Anthropic mają `import "server-only"`. Reguły potrzebne też w przeglądarce (np. dostęp do planu) są osobnymi, czystymi modułami.
+- **Warstwa AI poza route'ami.** Prompty, wywołania modelu i walidacja wyniku (Zod, structured output) są w `src/lib/ai`. Endpointy w `src/app/api` tylko czytają żądanie i mapują wynik na odpowiedź HTTP.
+- **Dane klienta.** Jeden klient API (`postJson`) z `AbortController` i tłumaczonymi komunikatami błędów. Raport, profil i plan siedzą w `localStorage` za `useSyncExternalStore`, a każdy zapis przechodzi przez parser, który zamienia uszkodzone dane na bezpieczny stan.
+- **Stan, który da się wyliczyć, nie jest trzymany.** Wybrana zakładka i pora dnia są w URL (odświeżenie i „wstecz” je zachowują), a „produkty gotowe” wynika z zapisanego raportu.
+- **Lazy loading.** Dialog produktu i zakładka diety to osobne chunki (`next/dynamic`). Dialog zaczyna się pobierać już po najechaniu na produkt lub ustawieniu na nim fokusu.
+- **Mały, testowalny kod.** Jeden komponent na plik, czysta logika w osobnych modułach `.ts` z testami, brak cykli importów.
+- **Renderowanie.** Karty kroków to komponenty `memo` ze stabilnymi callbackami, a lista jest memoizowana tylko tam, gdzie się to opłaca.
+- **Dostępność.** Zakładki zgodne z WAI-ARIA (klawiatura, roving tabindex), natywny `<dialog>`, `role="alert"` i `role="status"`, powiązane błędy formularzy.
+- **Odporność.** `error.tsx` w każdym segmencie aplikacji, `global-error.tsx`, `not-found.tsx`. Stare polskie adresy przekierowują na nowe (308).
+- **Jakość.** Testy jednostkowe czystej logiki (tabelaryczne, `node:test`), `pnpm check` lokalnie i CI na GitHub Actions (typy, lint, testy, build).
+
 ## Struktura
 
 ```
 src/
   app/
     (landing)/          strona główna pod /
-    (pwa)/aplikacja/    aplikacja: logowanie, onboarding (start/*) i zakładki (dzis, plan, profil)
-    api/analyze         analiza zdjęcia
-    api/routine         rutyna na podstawie raportu i profilu
-    api/products        dobór produktów do kroków rutyny
-    api/diet            lista żywieniowa
+    (pwa)/app/          aplikacja: logowanie, onboarding (start/*) i zakładki (today, plan, profile)
+    api/*/route.ts      cienkie endpointy modeli: analyze, routine, products, diet
     actions/            server actions: konto, logowanie, subskrypcja
-  components/           komponenty i hooki ekranów
-  lib/                  logika domenowa: schematy analizy, plan, katalog, dieta, subskrypcja, baza
-  i18n/                 tłumaczenia i obsługa języka
+  features/             ekrany i hooki pogrupowane według funkcji, jeden komponent na plik:
+                        analysis (camera/, report/), plan, skin-profile, account, auth,
+                        paywall, today, landing
+  components/           komponenty wspólne dla kilku funkcji
+  hooks/                hooki wspólne dla kilku funkcji
+  lib/                  logika domenowa i schematy: analiza, plan, katalog, dieta, subskrypcja, baza
+  lib/ai/               wywołania Claude: klient, prompty, obsługa żądań i błędów w endpointach
+  i18n/                 tłumaczenia, wybór języka, LocaleProvider
+  config/               ścieżki, nawigacja, tokeny marki
   data/catalog.json     katalog produktów (generowany przez scripts/build-catalog.mjs)
 docs/                   notatki techniczne i zrzuty ekranu
 ```
@@ -78,21 +96,30 @@ W `.env.local` ustaw:
 | `TURSO_DATABASE_URL` | adres bazy Turso; lokalnie wystarczy plik SQLite, np. `file:data/local.db` |
 | `TURSO_AUTH_TOKEN` | token Turso; przy lokalnym pliku dowolna niepusta wartość |
 
-Strona główna jest pod [http://localhost:3000](http://localhost:3000), aplikacja pod `/aplikacja`. Kamera, service worker i instalacja PWA wymagają HTTPS poza `localhost` (np. `next dev --experimental-https` albo tunel).
+Strona główna jest pod [http://localhost:3000](http://localhost:3000), aplikacja pod `/app`. Kamera, service worker i instalacja PWA wymagają HTTPS poza `localhost` (np. `next dev --experimental-https` albo tunel).
 
 ## Testy
 
 ```bash
-pnpm test
+pnpm test     # testy jednostkowe
+pnpm check    # typy, lint i testy, jak w CI
 ```
 
-Testy jednostkowe (`node:test`) obejmują logikę domenową w `src/lib` i `src/i18n`.
+Testy jednostkowe (`node:test`, bez dodatkowych zależności) obejmują czystą logikę w `src/lib`, `src/i18n`, `src/components` i `src/features`.
+
+## Zgodność (GxP, WCAG 2.1)
+
+Projekt jest prowadzony według praktyk dla środowiska regulowanego GxP i celuje w WCAG 2.1 AA. Wymagania z identyfikatorami, macierz identyfikowalności, plan walidacji, ocena 21 CFR Part 11 / Annex 11, integralność danych (ALCOA+) i deklaracja dostępności są w [docs/compliance](docs/compliance/README.md) (po angielsku).
+
+```bash
+pnpm verify   # typy, lint, testy, identyfikowalność, build, e2e i WCAG
+```
 
 ## Dokumentacja
 
 - [docs/TECH-SETUP.md](docs/TECH-SETUP.md) — analiza techniczna MVP i architektura
 - [docs/AI-INTEGRATION-BRIEF.md](docs/AI-INTEGRATION-BRIEF.md) — możliwe podejścia do obsługi wielu modeli AI
-- [scope-mvp.md](scope-mvp.md) — zakres MVP i lista ekranów
+- [docs/scope-mvp.md](docs/scope-mvp.md) — zakres MVP i lista ekranów
 
 ## Licencja
 

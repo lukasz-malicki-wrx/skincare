@@ -1,11 +1,11 @@
 "use client";
 
-import Link, { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
+import { NavLink } from "@/components/nav-link";
 
 export type AppNavItem = { href: string; label: string };
 
-export function AppNav({ items }: { items: readonly AppNavItem[] }) {
+export function AppNav({ items }: Readonly<{ items: readonly AppNavItem[] }>) {
   const pathname = usePathname();
 
   return (
@@ -19,23 +19,4 @@ export function AppNav({ items }: { items: readonly AppNavItem[] }) {
       ))}
     </nav>
   );
-}
-
-function NavLink({ item, active }: { item: AppNavItem; active: boolean }) {
-  return (
-    <Link
-      href={item.href}
-      prefetch={true}
-      aria-current={active ? "page" : undefined}
-      className="px-1 py-3 text-center text-sm"
-    >
-      <NavLabel active={active}>{item.label}</NavLabel>
-    </Link>
-  );
-}
-
-/** useLinkStatus only works inside a Link, so the pressed tab can highlight before the page arrives. */
-function NavLabel({ active, children }: { active: boolean; children: React.ReactNode }) {
-  const { pending } = useLinkStatus();
-  return <span className={active || pending ? "font-semibold text-accent" : "text-ink/60"}>{children}</span>;
 }

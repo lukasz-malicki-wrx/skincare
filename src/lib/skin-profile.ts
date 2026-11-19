@@ -52,6 +52,16 @@ export function parseProfile(raw: string | null): SkinProfile {
   }
 }
 
+/** The profile the user saved, or null before they filled the form (the model then gets no profile). */
+export function parseSavedProfile(raw: string | null): SkinProfile | null {
+  return raw ? parseProfile(raw) : null;
+}
+
+/** The list with `value` added, or removed when it is already there. */
+export function toggleValue(list: string[], value: string): string[] {
+  return list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+}
+
 export function clampBudget(value: unknown): number {
   if (typeof value !== "number" || !Number.isFinite(value)) return BUDGET_DEFAULT;
   return Math.min(BUDGET_MAX, Math.max(BUDGET_MIN, Math.round(value)));
