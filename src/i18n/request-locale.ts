@@ -1,3 +1,4 @@
+import "server-only";
 import { cookies } from "next/headers";
 import { LOCALE_COOKIE } from "@/i18n/locale-cookie";
 import { isLocale, type Locale } from "@/i18n/translations";

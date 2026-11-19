@@ -1,7 +1,6 @@
 /**
- * Brand w TS, dla miejsc, które nie czytają CSS: manifest PWA, viewport themeColor,
- * canvas, e-maile. Wartości muszą zgadzać się z `@theme` w src/app/globals.css.
- * Źródło: Figma "Untitled", ramki Colour palette, Typography, Logo.
+ * Brand values for code that cannot read CSS (PWA manifest, viewport theme colour). Source: the
+ * Figma "Colour palette", "Typography" and "Logo" frames. Must match `@theme` in globals.css.
  */
 export const brand = {
   colors: {
@@ -10,17 +9,19 @@ export const brand = {
     peachLight: "#fde0c5",
     peach: "#f2b48c",
     terracotta: "#c96f4a",
+    /** Accent for text and filled buttons: meets WCAG AA on cream and with white text. */
+    terracottaDeep: "#a65434",
     apricot: "#ffd4ac",
     clay: "#de8965",
     ink: "#1f1a17",
   },
-  /** Gradient kafelka loga, z góry na dół. */
+  /** Logo tile gradient, top to bottom. */
   logoGradient: ["#ffd4ac", "#de8965"] as const,
   fonts: {
     display: "Prata",
     sans: "Inter",
   },
-  /** Skala z Figmy: desktop / mobile, w px. */
+  /** Pixel sizes from Figma, desktop / mobile. */
   typeScale: {
     bodyLarge: { desktop: 20, mobile: 18 },
     bodyMedium: { desktop: 16, mobile: 16 },

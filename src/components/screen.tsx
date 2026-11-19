@@ -1,3 +1,6 @@
+import { Heading } from "@/components/heading";
+import { Text } from "@/components/text";
+
 export function Screen({
   title,
   text,
@@ -7,8 +10,8 @@ export function Screen({
 }) {
   return (
     <section className="flex flex-col gap-3">
-      <h1 className="heading-md">{title}</h1>
-      <p className="body-md text-ink/70">{text}</p>
+      <Heading level={1} variant="heading-md">{title}</Heading>
+      <Text tone="muted">{text}</Text>
     </section>
   );
 }

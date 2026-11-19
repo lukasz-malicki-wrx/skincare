@@ -7,9 +7,13 @@ import {
   createSession,
   createUser,
   destroySession,
+  findUserByEmail,
+  getSessionUser,
 } from "@/lib/auth";
 import { routes } from "@/config/routes";
 import { getTranslations } from "@/i18n/locale";
+import { auditEvent } from "@/lib/audit";
+import { recordAuditEvent } from "@/lib/audit-store";
 import { isValidEmail } from "@/lib/email";
 import { MIN_PASSWORD_LENGTH } from "@/lib/password";
 
@@ -44,6 +48,7 @@ export async function signUp(
     throw error;
   }
 
+  await recordAuditEvent(auditEvent("auth.sign_up", userId));
   await createSession(userId);
   redirect(routes.app.onboarding.photo);
 }
@@ -57,13 +62,20 @@ export async function signIn(
   const user = await authenticate(email, password);
 
   const t = await getTranslations();
-  if (!user) return { error: t.errors.invalidCredentials };
+  if (!user) {
+    const known = await findUserByEmail(email);
+    await recordAuditEvent(auditEvent("auth.sign_in_failed", known?.id ?? null, { knownAccount: Boolean(known) }));
+    return { error: t.errors.invalidCredentials };
+  }
 
+  await recordAuditEvent(auditEvent("auth.sign_in", user.id));
   await createSession(user.id);
   redirect(routes.app.today);
 }
 
 export async function signOut() {
+  const user = await getSessionUser();
+  if (user) await recordAuditEvent(auditEvent("auth.sign_out", user.id));
   await destroySession();
   redirect(routes.app.home);
 }

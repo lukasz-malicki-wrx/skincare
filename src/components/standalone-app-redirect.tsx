@@ -10,7 +10,10 @@ const redirectIfInstalled = `(function () {
   if (installed) location.replace(${JSON.stringify(routes.app.home)});
 })();`;
 
-/** W zainstalowanej PWA wejście na landing od razu otwiera aplikację. */
+/**
+ * In the installed PWA, opening the landing page goes straight to the app. Runs as an inline
+ * script before hydration so the landing never flashes.
+ */
 export function StandaloneAppRedirect() {
   return <script dangerouslySetInnerHTML={{ __html: redirectIfInstalled }} />;
 }

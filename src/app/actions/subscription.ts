@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { routes } from "@/config/routes";
 import { requireSessionUser } from "@/lib/auth";
-import { advanceSevenDays, cancelSubscription, startTrial } from "@/lib/subscription";
+import { advanceSevenDays, cancelSubscription, startTrial } from "@/lib/subscription-store";
 
 /** Called after the mocked checkout animation; the mock never fails. */
 export async function startTrialAction() {

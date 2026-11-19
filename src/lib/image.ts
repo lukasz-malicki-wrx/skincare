@@ -5,8 +5,9 @@ const MAX_EDGE = 1568;
 const QUALITY = 0.82;
 
 /**
- * Skaluje obraz do max 1568 px na dłuższym boku i zwraca JPEG data URL.
- * Przyjmuje <video> (klatka z aparatu) albo Blob (plik z input capture).
+ * A JPEG data URL of a camera frame (`<video>`) or a picked file (`Blob`), scaled down so its
+ * longer edge is at most MAX_EDGE px: the size the vision model reads best, and small enough for
+ * the request body limit.
  */
 export async function toCompressedJpeg(source: HTMLVideoElement | Blob): Promise<string> {
   const canvas = document.createElement("canvas");

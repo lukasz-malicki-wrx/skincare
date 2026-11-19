@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Prata } from "next/font/google";
 import { brand } from "@/config/brand";
 import { routes } from "@/config/routes";
-import { LocaleProvider } from "@/components/locale-provider";
+import { LocaleProvider } from "@/i18n/locale-provider";
 import { getLocale, getTranslations } from "@/i18n/locale";
 import "./globals.css";
+import { cn } from "@/lib/cn";
 
-/* Fonty brandu. Zmienne CSS czyta `@theme` w globals.css (--font-sans, --font-display). */
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
   variable: "--font-inter",
@@ -73,7 +73,7 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className={`${inter.variable} ${prata.variable}`}>
+    <html lang={locale} className={cn(inter.variable, prata.variable)}>
       <body className="bg-paper text-ink antialiased">
         <LocaleProvider locale={locale}>{children}</LocaleProvider>
       </body>

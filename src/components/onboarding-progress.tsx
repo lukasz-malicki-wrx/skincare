@@ -1,10 +1,11 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { ProgressBar } from "@/components/progress-bar";
 import { routes } from "@/config/routes";
-import { useMessages } from "@/components/locale-provider";
+import { useMessages } from "@/i18n/locale-provider";
 
-/** Screen numbers from scope-mvp.md; the bar replaces "Step 4 of 11" text. */
+/** Screen numbers from docs/scope-mvp.md; the bar replaces "Step 4 of 11" text. */
 const STEP_BY_PATH: Record<string, number> = {
   [routes.app.onboarding.photo]: 4,
   [routes.app.onboarding.report]: 6,
@@ -19,16 +20,5 @@ export function OnboardingProgress() {
   const pathname = usePathname();
   const step = STEP_BY_PATH[pathname] ?? 1;
 
-  return (
-    <div
-      role="progressbar"
-      aria-label={progressLabel}
-      aria-valuemin={1}
-      aria-valuemax={TOTAL_STEPS}
-      aria-valuenow={step}
-      className="h-1 w-full overflow-hidden rounded-full bg-line"
-    >
-      <div className="h-full rounded-full bg-accent" style={{ width: `${(step / TOTAL_STEPS) * 100}%` }} />
-    </div>
-  );
+  return <ProgressBar value={step} min={1} max={TOTAL_STEPS} label={progressLabel} />;
 }

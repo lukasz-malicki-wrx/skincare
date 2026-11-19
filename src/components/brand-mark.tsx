@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { brand } from "@/config/brand";
+import { cn } from "@/lib/cn";
 
-/** Kafelek loga z Figmy (gradient apricot → clay). */
 export function BrandMark({ size = 64, className = "" }: { size?: number; className?: string }) {
   return (
     <Image
@@ -10,7 +10,7 @@ export function BrandMark({ size = 64, className = "" }: { size?: number; classN
       width={size}
       height={size}
       priority
-      className={`shrink-0 rounded-[20%] ${className}`}
+      className={cn("shrink-0 rounded-[20%]", className)}
     />
   );
 }

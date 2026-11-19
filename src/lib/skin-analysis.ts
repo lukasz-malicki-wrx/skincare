@@ -91,6 +91,25 @@ export type StoredAnalysis = {
   routineProductsVersion?: number;
 };
 
+/**
+ * Reads the stored report back from localStorage. Anything that is not a report with a valid
+ * result (old shape, hand-edited, truncated) counts as no report rather than crashing a screen.
+ */
+export function parseStoredAnalysis(raw: string | null): StoredAnalysis | null {
+  if (!raw) return null;
+  let value: unknown;
+  try {
+    value = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  if (!value || typeof value !== "object") return null;
+  const candidate = value as Partial<StoredAnalysis>;
+  if (typeof candidate.createdAt !== "string" || typeof candidate.imageDataUrl !== "string") return null;
+  const result = SkinAnalysis.safeParse(candidate.result);
+  return result.success ? { ...(candidate as StoredAnalysis), result: result.data } : null;
+}
+
 /** The stage 1 part of a stored report, sent back to the model when the routine is built. */
 export function assessmentOf(analysis: SkinAnalysis): SkinAssessment {
   return {

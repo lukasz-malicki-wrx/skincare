@@ -2,7 +2,23 @@ import { candidatesFor, categoryForStep, findCatalogProduct, type CatalogProduct
 import { routineSteps, type RoutineStepRef } from "@/lib/products";
 import type { SkinAnalysis } from "@/lib/skin-analysis";
 import type { SkinProfile } from "@/lib/skin-profile";
-import type { PlanSwaps } from "@/components/use-plan-state";
+
+export const PLAN_KEY = "pielegnacja:plan";
+
+/** Step key -> catalogue product id the user swapped in. Absent = the report's own pick. */
+export type PlanSwaps = Record<string, string>;
+
+/** Stored swaps, keeping only string values; anything unreadable is "no swaps". */
+export function parseSwaps(raw: string | null): PlanSwaps {
+  if (!raw) return {};
+  try {
+    const value = JSON.parse(raw) as unknown;
+    if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+    return Object.fromEntries(Object.entries(value).filter(([, v]) => typeof v === "string")) as PlanSwaps;
+  } catch {
+    return {};
+  }
+}
 
 /** What a plan card shows. The plan is built from our catalogue only, so it never waits on a model. */
 export type PlanProduct = {

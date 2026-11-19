@@ -1,3 +1,4 @@
+import "server-only";
 import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 
 export const MIN_PASSWORD_LENGTH = 6;

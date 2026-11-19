@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
 /*
- * Brand (Figma: "Untitled", ramki Colour palette + Typography).
- * Surowe kolory pod `brand-*`, semantyczne aliasy (`paper`, `ink`, `accent`, `line`)
- * są tym, czego używają komponenty. Zmiana brandu = zmiana tego bloku.
+ * Design tokens from the Figma "Colour palette" and "Typography" frames. Raw colours live under
+ * `brand-*`; components use only the semantic aliases (`paper`, `ink`, `accent`, `line`).
+ * Keep in sync with src/config/brand.ts.
  */
 @theme {
-  /* Paleta z Figmy */
   --color-brand-white: #ffffff;
   --color-brand-cream: #fff8f1;
   --color-brand-peach-light: #fde0c5;
   --color-brand-peach: #f2b48c;
   --color-brand-terracotta: #c96f4a;
-  /* Gradient loga */
+  /* Text-safe terracotta: 5.1:1 on cream, 5.3:1 under white text (WCAG 2.1 AA). */
+  --color-brand-terracotta-deep: #a65434;
+  /* Logo gradient */
   --color-brand-apricot: #ffd4ac;
   --color-brand-clay: #de8965;
-  /* Tekst (z arkusza typografii, ciepła czerń) */
   --color-brand-ink: #1f1a17;
 
-  /* Aliasy semantyczne używane w komponentach */
   --color-paper: var(--color-brand-cream);
   --color-ink: var(--color-brand-ink);
-  --color-accent: var(--color-brand-terracotta);
+  /* The accent carries text (buttons, links, active states), so it uses the AA-safe shade.
+     The lighter terracotta is for decoration only (gradients, illustrations). */
+  --color-accent: var(--color-brand-terracotta-deep);
   --color-accent-soft: var(--color-brand-peach);
   --color-line: var(--color-brand-peach-light);
   --color-surface: var(--color-brand-white);
 
-  /* Fonty: zmienne ustawia next/font w src/app/layout.tsx */
+  /* Font variables are set by next/font in src/app/layout.tsx. */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-prata), ui-serif, Georgia, serif;
 }
@@ -36,8 +37,8 @@ body {
 }
 
 /*
- * Skala typografii (mobile) z ramki Typography. Nagłówki i tytuły: Prata 400.
- * Body i caption: Inter. Użycie: <h1 className="heading-lg">.
+ * Type scale (mobile) from the Figma "Typography" frame: Prata for headings and titles, Inter
+ * for body and caption. Components apply it through `Heading` and `Text`, not directly.
  */
 @utility heading-lg {
   font-family: var(--font-display);
@@ -100,7 +101,7 @@ body {
   text-transform: uppercase;
 }
 
-/* Loader analizy: linia skanująca po zdjęciu i paski wypełniające się po kolei. */
+/* Analysis loader: a scan line over the photo and progress bars that fill one after another. */
 @keyframes scan {
   from { top: -6rem; }
   to { top: 100%; }
@@ -117,4 +118,33 @@ body {
   animation-name: fill;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+}
+
+/* Focus ring for a control whose real <input> is visually hidden inside its label (WCAG 2.4.7). */
+@utility focus-ring-within {
+  &:has(:focus-visible) {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+/* Visible keyboard focus on every background (WCAG 2.4.7); mouse clicks leave no ring. */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/*
+ * Reduced motion (WCAG 2.3.3): animations and transitions finish at once, keeping their end state
+ * (filled progress bars) without the scan, spin or slide.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

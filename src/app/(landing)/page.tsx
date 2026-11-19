@@ -1,9 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import { getTranslations } from "@/i18n/locale";
-import { LandingScripts } from "./landing-scripts";
-import "./styles.css";
+import { LandingPage } from "@/features/landing/landing-page";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -24,15 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-/*
- * The landing was delivered as a static HTML page ported 1:1 from the design canvas.
- * Its body markup lives in landing.html next to this file and is rendered as-is: it is a
- * checked-in file we own, not user data, so SafeHtml/DOMPurify would only strip the inline SVG
- * symbol sprite the page relies on. Images are served from public/landing/img.
- */
-const markup = fs.readFileSync(path.join(process.cwd(), "src/app/(landing)/landing.html"), "utf8");
-
-export default function LandingPage() {
+export default function Page() {
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,8 +32,7 @@ export default function LandingPage() {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Prata&family=Figtree:wght@400;500;600&display=swap"
       />
-      <div dangerouslySetInnerHTML={{ __html: markup }} />
-      <LandingScripts />
+      <LandingPage />
     </>
   );
 }

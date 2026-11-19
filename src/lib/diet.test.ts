@@ -4,7 +4,7 @@ import { z } from "zod";
 import { applyRestrictions, dietInputsKey, dietPlanSchema, violatesRestriction } from "./diet.ts";
 import { skinAnalysisSchema } from "./skin-analysis.ts";
 
-test("violatesRestriction blocks the obvious foods per restriction", () => {
+test("REQ-AI-02 violatesRestriction blocks the obvious foods per restriction", () => {
   assert.equal(violatesRestriction("Salmon", ["vegan"]), true);
   assert.equal(violatesRestriction("Walnuts", ["nut allergy"]), true);
   assert.equal(violatesRestriction("Greek yogurt", ["lactose-free"]), true);
@@ -29,7 +29,7 @@ test("english output schemas do not show Polish examples", () => {
   assert.doesNotMatch(diet, /łosoś/);
 });
 
-test("applyRestrictions filters eat_more only", () => {
+test("REQ-AI-02 applyRestrictions filters eat_more only", () => {
   const plan = {
     eat_more: [{ item: "Salmon", why: "omega-3" }, { item: "Spinach", why: "zinc" }],
     limit: [{ item: "Milk", why: "may trigger acne" }],
