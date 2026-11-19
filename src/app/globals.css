@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/*
+ * Brand (Figma: "Untitled", ramki Colour palette + Typography).
+ * Surowe kolory pod `brand-*`, semantyczne aliasy (`paper`, `ink`, `accent`, `line`)
+ * są tym, czego używają komponenty. Zmiana brandu = zmiana tego bloku.
+ */
+@theme {
+  /* Paleta z Figmy */
+  --color-brand-white: #ffffff;
+  --color-brand-cream: #fff8f1;
+  --color-brand-peach-light: #fde0c5;
+  --color-brand-peach: #f2b48c;
+  --color-brand-terracotta: #c96f4a;
+  /* Gradient loga */
+  --color-brand-apricot: #ffd4ac;
+  --color-brand-clay: #de8965;
+  /* Tekst (z arkusza typografii, ciepła czerń) */
+  --color-brand-ink: #1f1a17;
+
+  /* Aliasy semantyczne używane w komponentach */
+  --color-paper: var(--color-brand-cream);
+  --color-ink: var(--color-brand-ink);
+  --color-accent: var(--color-brand-terracotta);
+  --color-accent-soft: var(--color-brand-peach);
+  --color-line: var(--color-brand-peach-light);
+  --color-surface: var(--color-brand-white);
+
+  /* Fonty: zmienne ustawia next/font w src/app/layout.tsx */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-prata), ui-serif, Georgia, serif;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+/*
+ * Skala typografii (mobile) z ramki Typography. Nagłówki i tytuły: Prata 400.
+ * Body i caption: Inter. Użycie: <h1 className="heading-lg">.
+ */
+@utility heading-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+@utility heading-md {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@utility heading-sm {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+@utility title-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+@utility title-md {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+@utility title-sm {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+@utility body-lg {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+@utility body-md {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+@utility body-sm {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+@utility caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Loader analizy: linia skanująca po zdjęciu i paski wypełniające się po kolei. */
+@keyframes scan {
+  from { top: -6rem; }
+  to { top: 100%; }
+}
+@keyframes fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@utility animate-scan {
+  animation: scan 2.4s ease-in-out infinite alternate;
+}
+@utility animate-fill {
+  width: 0;
+  animation-name: fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}

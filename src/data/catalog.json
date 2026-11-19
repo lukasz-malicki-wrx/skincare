@@ -1,0 +1,687 @@
+[
+  {
+    "id": "cleanser-1",
+    "category": "cleanser",
+    "name": "Żel do mycia twarzy, oczyszczający, cera mieszana i tłusta, Algi Oceaniczne",
+    "brand": "NIVEA",
+    "url": "https://www.rossmann.pl/Produkt/Zele-i-pianki-do-mycia-twarzy/Nivea-zel-do-mycia-twarzy-oczyszczajacy-matujacy-cera-tlusta-i-mieszana-150-ml,30004,13060",
+    "shop": "Rossmann",
+    "price_pln": 17.49,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "ocean algae",
+      "exfoliating microbeads"
+    ],
+    "how_to": "Apply a small amount of gel to dampened facial skin, neck and décolletage. Massage gently and rinse thoroughly with water.",
+    "watch_out": "Do not use with other exfoliating products to avoid over-exfoliation.",
+    "why": "For oily and combination skin seeking deep cleansing with mild exfoliation to reduce excess sebum and minimize pores."
+  },
+  {
+    "id": "cleanser-2",
+    "category": "cleanser",
+    "name": "Żel do mycia twarzy dla cery mieszanej i tłustej",
+    "brand": "Cetaphil",
+    "url": "https://www.ceneo.pl/182845274",
+    "shop": "Ceneo (multiple retailers)",
+    "price_pln": 47.65,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "dermatologist-tested formula"
+    ],
+    "how_to": "Apply to dampened skin and massage gently. Rinse thoroughly with water.",
+    "watch_out": null,
+    "why": "For oily and combination skin providing gentle daily cleansing without stripping natural oils."
+  },
+  {
+    "id": "cleanser-3",
+    "category": "cleanser",
+    "name": "oczyszczający żel do mycia twarzy dla skóry normalnej, mieszanej i tłustej refill",
+    "brand": "CeraVe",
+    "url": "https://www.hebe.pl/cerave-oczyszczajacy-zel-do-mycia-twarzy-dla-skory-normalnej-mieszanej-i-tlustej-refill-473-ml-000000000000651596.html",
+    "shop": "Hebe",
+    "price_pln": 49.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "how_to": "Apply to damp skin and massage gently, then rinse thoroughly with water.",
+    "watch_out": null,
+    "why": "For oily and combination skin needing effective cleansing with skin barrier support from ceramides."
+  },
+  {
+    "id": "cleanser-4",
+    "category": "cleanser",
+    "name": "Nawilżający żel oczyszczający do skóry suchej i wrażliwej",
+    "brand": "BasicLab",
+    "url": "https://www.douglas.pl/pl/p/5011212060",
+    "shop": "Douglas",
+    "price_pln": 47.92,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "micellar complex SEPITONIC M3.0",
+      "gentle cleansing agents"
+    ],
+    "how_to": "Apply to damp face or body, massage gently, rinse thoroughly with water.",
+    "watch_out": null,
+    "why": "For daily cleansing of sensitive and dry skin without tightness or irritation."
+  },
+  {
+    "id": "cleanser-5",
+    "category": "cleanser",
+    "name": "Żel do mycia twarzy do skóry suchej i wrażliwej",
+    "brand": "Physiogel",
+    "url": "https://www.hebe.pl/physiogel-zel-do-mycia-twarzy-do-skory-suchej-i-wrazliwej-150-ml-49288318.html",
+    "shop": "Hebe",
+    "price_pln": 49.99,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "physiological pH formula",
+      "soap-free cleansing"
+    ],
+    "how_to": "Wet face with water, apply the gel, massage gently, and rinse thoroughly or use without rinsing.",
+    "watch_out": null,
+    "why": "For daily facial cleansing of dry and sensitive skin with soothing, gentle action."
+  },
+  {
+    "id": "cleanser-6",
+    "category": "cleanser",
+    "name": "Pielęgnujący żel-krem do mycia twarzy cera sucha i wrażliwa",
+    "brand": "Nivea",
+    "url": "https://www.ceneo.pl/19619772",
+    "shop": "Ceneo",
+    "price_pln": 17.39,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "almond oil",
+      "gentle formula"
+    ],
+    "how_to": "Apply to damp face and body, massage gently, and rinse with water.",
+    "watch_out": null,
+    "why": "For affordable daily care of dry and sensitive skin with soothing almond oil."
+  },
+  {
+    "id": "toner-7",
+    "category": "toner",
+    "name": "Clean & More Tonik regulujący dla cery mieszanej i tłustej",
+    "brand": "Dermika",
+    "url": "https://www.doz.pl/apteka/p169985-Dermika_Clean__More_tonik_regulujacy_dla_cery_mieszanej_i_tlustej_200_ml",
+    "shop": "Doz.pl",
+    "price_pln": 18.39,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "glycolic acid",
+      "inulin",
+      "chicory"
+    ],
+    "how_to": "Apply to cleansed face and neck after washing. Use morning and evening.",
+    "watch_out": "May cause sensitivity if combined with other exfoliating acids or retinoids.",
+    "why": "Ideal for oily and combination skin types to gently exfoliate and regulate sebum production."
+  },
+  {
+    "id": "toner-8",
+    "category": "toner",
+    "name": "Czysta Skóra Tonik matujący zwężający pory",
+    "brand": "Garnier",
+    "url": "https://www.rossmann.pl/Produkt/Toniki-do-twarzy/Garnier-Czysta-Skora-tonik-do-twarzy-matujacy-zwezajacy-pory-200-ml,14430,13066",
+    "shop": "Rossmann",
+    "price_pln": null,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "salicylic acid",
+      "niacinamide"
+    ],
+    "how_to": "Apply toner to cleansed face using a cotton pad or by patting directly onto skin twice daily.",
+    "watch_out": "Avoid combining with other BHA/AHA exfoliants or vitamin C serums.",
+    "why": "Formulated for oily and combination skin prone to imperfections, it minimizes pores and mattifies."
+  },
+  {
+    "id": "toner-9",
+    "category": "toner",
+    "name": "Tonik ziołowy do cery tłustej Szałwia i Nagietek",
+    "brand": "Fitomed",
+    "url": "https://www.ceneo.pl/62727386",
+    "shop": "Ceneo",
+    "price_pln": 17.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "sage extract",
+      "marigold extract"
+    ],
+    "how_to": "Apply with a cotton pad to cleansed face twice daily, morning and evening.",
+    "watch_out": null,
+    "why": "Herbal toner ideal for oily and combination skin that effectively cleanses without over-drying."
+  },
+  {
+    "id": "serum-10",
+    "category": "serum",
+    "name": "I Love Serum serum normalizujące",
+    "brand": "Soraya",
+    "url": "https://www.rossmann.pl/Produkt/Serum/Soraya-I-love-serum-serum-normalizujace-do-cery-tlustej-i-mieszanej-30-ml,390297,9225",
+    "shop": "Rossmann",
+    "price_pln": 14.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "Niacinamide 8%",
+      "Betaine Salicylate",
+      "Glycerin"
+    ],
+    "how_to": "Apply a few drops to cleansed face and neck in the morning and evening. Allow to absorb completely before applying moisturizer.",
+    "watch_out": "Do not combine with other niacynamide products to avoid irritation from excessive concentration.",
+    "why": "Designed for oily and combination skin types that need sebum regulation, pore reduction, and smoothing of appearance."
+  },
+  {
+    "id": "serum-11",
+    "category": "serum",
+    "name": "Madagascar Centella Niacinamide 10 serum-ampułka",
+    "brand": "SKIN1004",
+    "url": "https://www.rossmann.pl/Produkt/Serum-boostery-i-esencje/SKIN1004-Madagascar-Centella-Niacinamide-10-serum-ampulka-do-twarzy-wzmacniajace-30-ml,2124882,13051",
+    "shop": "Rossmann",
+    "price_pln": 34.99,
+    "skin_types": [
+      "oily",
+      "combination",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "Niacinamide 10%",
+      "Tranexamic Acid",
+      "Centella Asiatica Extract"
+    ],
+    "how_to": "Apply an appropriate amount to clean skin and massage gently until fully absorbed. Use morning and evening as part of your skincare routine.",
+    "watch_out": "Avoid combining with other high-concentration vitamin products to prevent sensitization.",
+    "why": "Perfect for oily and combination skin with uneven texture and dullness, as it minimizes pores and evens skin tone."
+  },
+  {
+    "id": "serum-12",
+    "category": "serum",
+    "name": "Serum Zmniejszające Niedoskonałości Z Niacynamidem 5%",
+    "brand": "BasicLab Dermocosmetics",
+    "url": "https://www.ceneo.pl/188981607",
+    "shop": "Ceneo",
+    "price_pln": 28.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "Niacinamide 5%",
+      "Probiotics 5%",
+      "Rice Water Extract"
+    ],
+    "how_to": "Apply a few drops to the face and neck in the morning and evening. Massage gently until absorbed.",
+    "watch_out": "Do not mix with other active ingredients like acids or retinoids without spacing out applications to avoid irritation.",
+    "why": "Ideal for oily, combination, and problematic skin types as it regulates sebum, minimizes pores, and supports skin microbiome."
+  },
+  {
+    "id": "serum-13",
+    "category": "serum",
+    "name": "Skin Clinic Professional Niacynamid serum",
+    "brand": "Bielenda",
+    "url": "https://www.rossmann.pl/Produkt/Serum-boostery-i-esencje/Bielenda-Skin-Clinic-Professional-Niacynamid-serum-do-twarzy-normalizujaco-wygladzajace-na-dzien-i,2102843,13051",
+    "shop": "Rossmann",
+    "price_pln": 24.49,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "Niacinamide 10%",
+      "Alpha-Arbutin",
+      "Lactic Acid"
+    ],
+    "how_to": "Apply to clean face and neck in the morning and evening. Massage gently until the serum is fully absorbed.",
+    "watch_out": "Do not combine with other exfoliating acids or vitamin C products without proper spacing to minimize irritation risk.",
+    "why": "Formulated for combination skin with imperfections, evening skin tone, reducing pore visibility, and controlling sebum production."
+  },
+  {
+    "id": "serum-14",
+    "category": "serum",
+    "name": "Niacynobaza 25%",
+    "brand": "Niacynobaza",
+    "url": "https://www.ceneo.pl/182039369",
+    "shop": "Ceneo (multiple pharmacies)",
+    "price_pln": 20.98,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "Niacinamide 25%"
+    ],
+    "how_to": "Apply to cleansed and toned skin. For sensitive skin, start with lower concentrations and gradually increase.",
+    "watch_out": "25% niacinamide is a high concentration - it may cause slight redness or discomfort in sensitive skin, especially on first applications.",
+    "why": "A concentrated serum with 25% niacinamide suitable for dry and sensitive skin that need effective niacinamide benefits without additional ingredients."
+  },
+  {
+    "id": "moisturizer-15",
+    "category": "moisturizer",
+    "name": "Nivea 24h Nawilżenia",
+    "brand": "Nivea",
+    "url": "https://www.hebe.pl/nivea-matujacy-krem-na-dzien-do-cery-tlustej-i-mieszanej-z-aloesem-i-mineralami-50-ml-000000000000367294.html",
+    "shop": "Hebe",
+    "price_pln": 25.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "aloe",
+      "minerals",
+      "Moisture Care Complex"
+    ],
+    "how_to": "Apply to cleansed face with gentle circular motions. The lightweight formula absorbs quickly and works for 24 hours.",
+    "watch_out": null,
+    "why": "This mattifying cream is designed for combination and oily skin that needs hydration without a greasy feel."
+  },
+  {
+    "id": "moisturizer-16",
+    "category": "moisturizer",
+    "name": "Bioderma Sebium Mat Control",
+    "brand": "Bioderma",
+    "url": "https://www.hebe.pl/bioderma-krem-matujacy-do-twarzy-30-ml-000000000000427862.html",
+    "shop": "Hebe",
+    "price_pln": 59.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "zinc gluconate",
+      "vitamin B6",
+      "Fluidactiv technology",
+      "salicylic acid"
+    ],
+    "how_to": "Apply morning and/or evening to cleansed skin, gently patting until absorbed. Works best after cleansing with Sebium Gel moussant or Sebium H2O.",
+    "watch_out": null,
+    "why": "This mattifying cream regulates sebum production and controls shine for 8 hours while hydrating combination and oily skin."
+  },
+  {
+    "id": "moisturizer-17",
+    "category": "moisturizer",
+    "name": "Bielenda CBD Cannabidiol",
+    "brand": "Bielenda",
+    "url": "https://www.rossmann.pl/Produkt/Kremy-do-twarzy/Bielenda-CBD-Cannabidiol-krem-nawilzajaco-detoksykujacy-na-dzien-i-na-noc-cera-mieszana-i-tlusta-50,325095,9223",
+    "shop": "Rossmann",
+    "price_pln": null,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "CBD from hemp",
+      "vitamin B3",
+      "tea tree oil",
+      "hemp seed oil"
+    ],
+    "how_to": "Apply to cleansed skin morning and/or evening. The vegan formula absorbs quickly without clogging pores.",
+    "watch_out": "Avoid combining with other hemp-based or CBD products to prevent over-concentration.",
+    "why": "This vegan hydrating-detoxifying cream is specially formulated for combination and oily skin, fighting impurities with natural ingredients."
+  },
+  {
+    "id": "moisturizer-18",
+    "category": "moisturizer",
+    "name": "Cera Wrażliwa krem do twarzy intensywnie nawilżający na dzień",
+    "brand": "AA",
+    "url": "https://www.rossmann.pl/Produkt/Kremy-do-twarzy/AA-Cera-Wrazliwa-krem-do-twarzy-intensywnie-nawilzajacy-na-dzien-50-ml,396853,9223",
+    "shop": "Rossmann",
+    "price_pln": 19.99,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "glycerin",
+      "humectants",
+      "hydrating complex"
+    ],
+    "how_to": "Apply a small amount to clean face and neck in the morning. Allow to absorb for a few minutes before applying sunscreen.",
+    "watch_out": null,
+    "why": "This intensely hydrating day cream is designed for sensitive, allergy-prone skin requiring long-lasting moisture and comfort."
+  },
+  {
+    "id": "moisturizer-19",
+    "category": "moisturizer",
+    "name": "Hydro Lipidium krem do twarzy barierowy nawilżająco-kojący",
+    "brand": "Bielenda",
+    "url": "https://www.rossmann.pl/Produkt/Kremy-do-twarzy/Bielenda-Hydro-Lipidium-krem-do-twarzy-barierowy-nawilzajaco-kojacy-50-ml,2031027,13049",
+    "shop": "Rossmann",
+    "price_pln": 27.99,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "lipid complex",
+      "hyaluronic acid",
+      "ectoine",
+      "panthenol B5"
+    ],
+    "how_to": "Apply morning and evening to clean skin. Gently massage into face and neck until fully absorbed.",
+    "watch_out": null,
+    "why": "This barrier cream with lipid complex, hyaluronic acid and panthenol soothes dry, sensitive skin while strengthening the skin barrier."
+  },
+  {
+    "id": "moisturizer-20",
+    "category": "moisturizer",
+    "name": "Codzienne Nawilżanie krem do twarzy do skóry suchej i wrażliwej",
+    "brand": "Physiogel",
+    "url": "https://www.rossmann.pl/Produkt/Kremy-do-twarzy/Physiogel-Codzienne-Nawilzanie-krem-do-twarzy-do-skory-suchej-i-wrazlwej-75-ml,2095835,13049",
+    "shop": "Rossmann",
+    "price_pln": 63.99,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "biomimetic technology",
+      "lipids",
+      "ceramides",
+      "hyaluronic acid"
+    ],
+    "how_to": "Apply daily to clean skin in the morning and evening. Use a gentle massage to distribute the cream evenly.",
+    "watch_out": "Avoid combining with other moisturizers that may cause heavy layering on sensitive skin.",
+    "why": "This hypoallergenic moisturizer strengthens and rebuilds the skin barrier, reducing sensitivity while restoring elasticity for dry and sensitive skin."
+  },
+  {
+    "id": "spf-21",
+    "category": "spf",
+    "name": "Lirene Cera Wrażliwa krem do twarzy odżywczy z filtrem SPF 50",
+    "brand": "Lirene",
+    "url": "https://www.rossmann.pl/Produkt/Kosmetyki-z-SPF/Lirene-Cera-Wrazliwa-krem-do-twarzy-odzywczy-z-filtrem-SPF-50-PA-HEV-IR-Cica-50-ml,2091661,19372",
+    "shop": "Rossmann",
+    "price_pln": 23.99,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "Cica",
+      "18% lipid complex",
+      "chamomile hydrolat",
+      "SPF 50"
+    ],
+    "how_to": "Apply a sunscreen amount to clean face and neck, gently patting until absorbed. Use daily before sun exposure.",
+    "watch_out": "Do not combine with vitamin C serums in the same routine as they may reduce effectiveness of the sunscreen.",
+    "why": "Ideal for sensitive skin requiring nourishing sun protection with barrier-strengthening lipids and soothing cica."
+  },
+  {
+    "id": "spf-22",
+    "category": "spf",
+    "name": "Avène Eau Thermale krem z filtrem skóra sucha i wrażliwa SPF50+",
+    "brand": "Avène",
+    "url": "https://www.hebe.pl/avene-krem-przeciwsloneczny-spf50-50-ml-000000000000414232.html",
+    "shop": "Hebe",
+    "price_pln": 99.99,
+    "skin_types": [
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "SPF 50+ filter",
+      "Thermal Spring Water",
+      "UV protection",
+      "moisturizing components"
+    ],
+    "how_to": "Apply evenly to face and neck before sun exposure. Provides protection for up to 8 hours with moisturizing effects.",
+    "watch_out": "Avoid applying with other heavy oils as the cream may feel occlusive on some sensitive skin types.",
+    "why": "Perfect for dry and sensitive skin requiring ultra-high SPF protection with 8-hour hydration and mattifying finish."
+  },
+  {
+    "id": "spf-23",
+    "category": "spf",
+    "name": "Bioderma Photoderm Crème SPF50+ Light",
+    "brand": "Bioderma",
+    "url": "https://www.rossmann.pl/Produkt/Kosmetyki-z-SPF/Bioderma-Photoderm-krem-do-twarzy-przeciwsloneczny-SPF50-skora-wrazliwa-i-sucha-40-ml,2084685,19372",
+    "shop": "Rossmann",
+    "price_pln": 69.99,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "Sun Active Defense technology",
+      "SPF 50+ filter",
+      "moisturizing agents",
+      "bioactive compounds"
+    ],
+    "how_to": "Apply generously to face before sun exposure. The lightweight cream serves as excellent makeup base and does not clog pores.",
+    "watch_out": "Do not mix with exfoliating actives like retinol on the same day as sun exposure without allowing proper spacing.",
+    "why": "For sensitive and dry skin seeking a lightweight, non-comedogenic sunscreen that provides 8-hour hydration and serves as makeup base."
+  },
+  {
+    "id": "night-24",
+    "category": "night",
+    "name": "Krem na noc cera tłusta i mieszana 50 ml",
+    "brand": "Onlybio",
+    "url": "https://www.ceneo.pl/89025614",
+    "shop": "ceneo.pl",
+    "price_pln": 12.99,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "biorafinowany lewan z rzepaku",
+      "squalane from olive oil",
+      "aloe extract",
+      "absorbent cellulose"
+    ],
+    "how_to": "Apply the cream to cleansed facial skin, neck and décolletage. Use daily every evening.",
+    "watch_out": null,
+    "why": "For those with oily and combination skin seeking deep hydration without pore-clogging and maintaining matte finish overnight."
+  },
+  {
+    "id": "night-25",
+    "category": "night",
+    "name": "24H Nawilżenia krem odżywczy na noc - cera sucha i wrażliwa",
+    "brand": "NIVEA",
+    "url": "https://www.rossmann.pl/Produkt/Kremy-do-twarzy/Nivea-24H-Nawilzenia-krem-odzywczy-na-noc-cera-sucha-i-wrazliwa-50-ml,340897,9223",
+    "shop": "Rossmann",
+    "price_pln": null,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "provitamin B5",
+      "almond oil",
+      "shea butter",
+      "antioxidants"
+    ],
+    "how_to": "Apply the cream in the evening to cleansed facial skin, gently massaging it in circular motions. Avoid the eye area.",
+    "watch_out": null,
+    "why": "This rich night cream for dry and sensitive skin protects and regenerates your skin during sleep while providing 24-hour hydration."
+  },
+  {
+    "id": "toner-26",
+    "category": "toner",
+    "name": "Acne Skin tonik do twarzy regulujący",
+    "brand": "Selfie Project",
+    "url": "https://www.rossmann.pl/Produkt/Toniki-do-twarzy/Selfie-Project-Acne-Skin-tonik-do-twarzy-regulujacy-150-ml,379113,8692",
+    "shop": "Rossmann",
+    "price_pln": 14.49,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "AHA acids (malic, glycolic, lactic)",
+      "Salicylic acid",
+      "Zinc PCA",
+      "Allantoin"
+    ],
+    "how_to": "Apply toner to the face using a soaked cotton pad or spray directly onto the skin. Leave to absorb and use morning and evening.",
+    "watch_out": "Do not combine with other exfoliating products on the same day.",
+    "why": "For acne-prone, oily and combination skin that needs gentle exfoliation while maintaining natural pH balance."
+  },
+  {
+    "id": "toner-27",
+    "category": "toner",
+    "name": "Acido Ialuronico Tonik przywracający równowagę do cery mieszanej i tłustej",
+    "brand": "L'erbolario",
+    "url": "https://www.douglas.pl/pl/p/5010088031",
+    "shop": "Douglas",
+    "price_pln": null,
+    "skin_types": [
+      "oily",
+      "combination"
+    ],
+    "key_ingredients": [
+      "Hyaluronic acid (3 different molecular weights)",
+      "Plant-based ingredients",
+      "Natural botanical extracts"
+    ],
+    "how_to": "Apply subtly to cleanse and restore natural pH, preparing skin for next care steps. Can also be used as a mask.",
+    "watch_out": "Avoid contact with eyes.",
+    "why": "For oily and combination skin seeking balance and hydration without alcohol, parabens or petroleum."
+  },
+  {
+    "id": "spf-28",
+    "category": "spf",
+    "name": "Nawilżający Krem do Twarzy SPF 50",
+    "brand": "CeraVe",
+    "url": "https://www.superpharm.pl/cerave-nawilzajacy-krem-do-twarzy-spf50-do-skory-normalnej-i-suchej-162515",
+    "shop": "Super-Pharm",
+    "price_pln": 54.99,
+    "skin_types": [
+      "normal",
+      "dry",
+      "sensitive"
+    ],
+    "key_ingredients": [
+      "ceramidy",
+      "kwas hialuronowy",
+      "niacynamid",
+      "filtry UV"
+    ],
+    "how_to": "Apply daily in the morning to cleansed facial skin. The cream provides long-lasting hydration and protects against harmful UV rays.",
+    "watch_out": "Avoid contact with eyes; product is not water-resistant.",
+    "why": "For those seeking daily hydration with high sun protection for normal and dry skin."
+  },
+  {
+    "id": "spf-29",
+    "category": "spf",
+    "name": "Krem z filtrem, skóra sucha i wrażliwa, SPF50+",
+    "brand": "Avene",
+    "url": "https://www.doz.pl/apteka/p154084-Avene_Eau_Thermale_krem_z_filtrem_skora_sucha_i_wrazliwa_SPF50__50_ml",
+    "shop": "DOZ.pl",
+    "price_pln": 65.49,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "Eau Thermale (woda termalna)",
+      "filtry UV szerokie spektrum",
+      "składniki kojące"
+    ],
+    "how_to": "Apply the sunscreen cream daily to dry and sensitive facial skin for broad-spectrum UVB and UVA protection.",
+    "watch_out": null,
+    "why": "Designed for sensitive and dry skin requiring gentle high-SPF protection with thermal water."
+  },
+  {
+    "id": "night-30",
+    "category": "night",
+    "name": "CeraVe Nawilżający krem do twarzy z ceramidami",
+    "brand": "CeraVe",
+    "url": "https://www.doz.pl/apteka/p133708-CeraVe_nawilzajacy_krem_do_twarzy_z_ceramidami_52_ml",
+    "shop": "DOZ.pl",
+    "price_pln": 48.39,
+    "skin_types": [
+      "normal",
+      "dry"
+    ],
+    "key_ingredients": [
+      "Ceramide NP",
+      "Ceramide AP",
+      "Ceramide EOP",
+      "Niacinamide"
+    ],
+    "how_to": "Apply to dried facial skin in the morning and/or evening. The lightweight formula absorbs quickly while providing long-lasting hydration.",
+    "watch_out": null,
+    "why": "For those with normal to dry skin seeking deep hydration and barrier repair with ceramides and niacinamide."
+  },
+  {
+    "id": "night-31",
+    "category": "night",
+    "name": "Bielenda Professional SupremeLab Barrier Renew Intensywnie odżywczy krem na noc z ceramidami",
+    "brand": "Bielenda",
+    "url": "https://www.douglas.pl/pl/p/5010663261",
+    "shop": "Douglas.pl",
+    "price_pln": 61.09,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "combination"
+    ],
+    "key_ingredients": [
+      "Ceramides",
+      "Squalane",
+      "Vitamin E"
+    ],
+    "how_to": "Apply to cleansed, dry facial skin in the evening, gently patting in. Use at night for deep renewal and regeneration.",
+    "watch_out": null,
+    "why": "For dry, sensitive, and combination skin requiring intensive nourishment and barrier restoration during nighttime."
+  },
+  {
+    "id": "night-32",
+    "category": "night",
+    "name": "Prreti multifunkcyjny krem z ceramidami",
+    "brand": "Prreti",
+    "url": "https://www.hebe.pl/prreti-multifunkcyjny-krem-z-ceramidami-50-ml-000000000000472522.html",
+    "shop": "Hebe.pl",
+    "price_pln": null,
+    "skin_types": [
+      "dry",
+      "sensitive",
+      "normal"
+    ],
+    "key_ingredients": [
+      "Ceramides (5 types)",
+      "Niacinamide",
+      "Shea Butter",
+      "Aloe"
+    ],
+    "how_to": "Apply to clean skin as a night cream or use as an intensive SOS repair product. The lightweight formula absorbs quickly without leaving greasy residue.",
+    "watch_out": "May cause heaviness on oily skin types.",
+    "why": "For dry, sensitive, or compromised skin seeking soothing, nourishing, and regenerating care with multiple ceramide types."
+  }
+]
